@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Fact1_Regression_from_Python.htm</title>
+<meta charset="utf-8"/>
+<style>
+.details {visibility:hidden;}
+.procedureTitle{color: #1d3649;font-weight: 600;font-size: 20px;line-height: 24px;margin-left: 32px;font-family: monospace;}
+.pivot{color:#264A60;background-color:#FFFFFF;font-family:sans-serif;font-size:9pt;font-weight:normal;}
+.pivot th{font-weight:normal;}
+.pivot caption{padding-top:1pt;color:#010205;font-weight:bold;padding-left:6pt;vertical-align:middle;font-size:11pt;padding-bottom:6pt;text-align:center;padding-right:8pt;}
+.layers{padding-top:1pt;color:#010205;padding-left:6pt;vertical-align:bottom;padding-bottom:3pt;text-align:left;padding-right:8pt;}
+.cornerLabels{padding-top:3pt;padding-left:6pt;vertical-align:bottom;padding-bottom:1pt;text-align:left;padding-right:8pt;}
+.pivot thead th:not:(.cornerLabels){padding-top:2pt;padding-left:6pt;vertical-align:bottom;padding-bottom:2pt;text-align:center;padding-right:8pt;}
+.pivot tbody th{background-color:#E0E0E0;padding-top:3pt;padding-left:6pt;vertical-align:top;padding-bottom:2pt;text-align:left;padding-right:8pt;}
+.pivot tbody td{background-color:#F9F9FB;padding-top:3pt;color:#010205;padding-left:6pt;vertical-align:top;padding-bottom:2pt;text-align:right;padding-right:8pt;}
+.pivot tbody tr:nth-child(even) td{background-color:#F9F9FB;color:#010205;}
+.caption{padding-top:1pt;color:#010205;padding-left:6pt;vertical-align:top;padding-bottom:1pt;text-align:left;padding-right:8pt;}
+.pivot tfoot tr td{padding-top:2pt;color:#010205;padding-left:18pt;vertical-align:top;padding-bottom:3pt;text-align:left;padding-right:18pt;}
+.titleLayerSeparator{border-top:1px none #152935;}
+.pivot tbody{border-top:1px none #152935;border-right:1px none #152935;border-left:1px none #152935;border-bottom:1px solid #152935;}
+.pivot tbody tr td:first-of-type{border-left:1px none #152935;}
+.pivot tbody tr:first-child td{border-top:1px solid #152935;}
+.pivot tbody tr + tr{border-top:1px solid #AEAEAE;}
+.hDR{border-top:1px none #AEAEAE;}
+.vCR{border-left:1px none #AEAEAE;}
+.vDR{border-left:1px none #AEAEAE;}
+.hCC{border-bottom:1px none #AEAEAE;}
+.hDC{border-bottom:1px none #AEAEAE;}
+.pivot thead th:not(:last-child), .pivot td:not(:last-child){border-right:1px solid #e0e0e0;}
+.vDC{border-right:1px none #AEAEAE;}
+.pivot{margin: 80px 40px 40px 80px;}
+.pivot thead.tr.th {padding:0px;border-spacing:0px}
+.hal{text-align:left} .hac{text-align:center} .har{text-align:right}
+.val{vertical-align:left} .vac{vertical-align:center} .var{vertical-align:right}
+</style>
+</head>
+<body>
+<p align="left"><html><BR>  <head><BR>    <style type="text/css"><BR>      <!--<BR>        p { color: 000000; font-family: Monospaced; font-size: 12pt; font-style: normal; font-weight: normal; text-decoration: none }<BR>      --><BR>    </style><BR>    <BR>  </head><BR>  <body><BR>    <font size="3" face="Monospaced" color="#000000">PRESERVE.<br>SET&#160;DECIMAL&#160;DOT.<br><br>GET&#160;DATA&#160;&#160;/TYPE=TXT<br>&#160;&#160;/FILE=&quot;C:\Users\yichu\Work\Year2020\Geography\Student_Research\Sarigai\Manuscript\Environ_Pollu\Fact1_Bands.csv&quot;<br>&#160;&#160;/ENCODING='UTF8'<br>&#160;&#160;/DELIMITERS=&quot;,&quot;<br>&#160;&#160;/QUALIFIER='&quot;'<br>&#160;&#160;/ARRANGEMENT=DELIMITED<br>&#160;&#160;/FIRSTCASE=2<br>&#160;&#160;/DATATYPEMIN&#160;PERCENTAGE=95.0<br>&#160;&#160;/VARIABLES=<br>&#160;&#160;FAC1&#160;AUTO<br>&#160;&#160;s1360&#160;AUTO<br>&#160;&#160;s1370&#160;AUTO<br>&#160;&#160;s1380&#160;AUTO<br>&#160;&#160;s1840&#160;AUTO<br>&#160;&#160;s1870&#160;AUTO<br>&#160;&#160;s1890&#160;AUTO<br>&#160;&#160;s1910&#160;AUTO<br>&#160;&#160;s1920&#160;AUTO<br>&#160;&#160;s2480&#160;AUTO<br>&#160;&#160;s2490&#160;AUTO<br>&#160;&#160;SR550650&#160;AUTO<br>&#160;&#160;SR650750&#160;AUTO<br>&#160;&#160;/MAP.<br>RESTORE.<br>CACHE.<br>EXECUTE.<br><br>Data&#160;written&#160;to&#160;the&#160;working&#160;file.<br>13&#160;variables&#160;and&#160;52&#160;cases&#160;written.<br>Variable:&#160;FAC1&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Type:&#160;Number&#160;&#160;Format&#160;:&#160;F8.5<br>Variable:&#160;s1360&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Type:&#160;Number&#160;&#160;Format&#160;:&#160;F7.5<br>Variable:&#160;s1370&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Type:&#160;Number&#160;&#160;Format&#160;:&#160;F7.5<br>Variable:&#160;s1380&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Type:&#160;Number&#160;&#160;Format&#160;:&#160;F7.5<br>Variable:&#160;s1840&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Type:&#160;Number&#160;&#160;Format&#160;:&#160;F7.5<br>Variable:&#160;s1870&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Type:&#160;Number&#160;&#160;Format&#160;:&#160;F7.5<br>Variable:&#160;s1890&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Type:&#160;Number&#160;&#160;Format&#160;:&#160;F7.5<br>Variable:&#160;s1910&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Type:&#160;Number&#160;&#160;Format&#160;:&#160;F7.5<br>Variable:&#160;s1920&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Type:&#160;Number&#160;&#160;Format&#160;:&#160;F7.5<br>Variable:&#160;s2480&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Type:&#160;Number&#160;&#160;Format&#160;:&#160;F7.5<br>Variable:&#160;s2490&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Type:&#160;Number&#160;&#160;Format&#160;:&#160;F7.5<br>Variable:&#160;SR550650&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Type:&#160;Number&#160;&#160;Format&#160;:&#160;F7.5<br>Variable:&#160;SR650750&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Type:&#160;Number&#160;&#160;Format&#160;:&#160;F7.5<br><br>Substitute&#160;the&#160;following&#160;to&#160;build&#160;syntax&#160;for&#160;these&#160;data.<br>&#160;&#160;/VARIABLES=<br>&#160;&#160;&#160;FAC1&#160;F8.5<br>&#160;&#160;&#160;s1360&#160;F7.5<br>&#160;&#160;&#160;s1370&#160;F7.5<br>&#160;&#160;&#160;s1380&#160;F7.5<br>&#160;&#160;&#160;s1840&#160;F7.5<br>&#160;&#160;&#160;s1870&#160;F7.5<br>&#160;&#160;&#160;s1890&#160;F7.5<br>&#160;&#160;&#160;s1910&#160;F7.5<br>&#160;&#160;&#160;s1920&#160;F7.5<br>&#160;&#160;&#160;s2480&#160;F7.5<br>&#160;&#160;&#160;s2490&#160;F7.5<br>&#160;&#160;&#160;SR550650&#160;F7.5<br>&#160;&#160;&#160;SR650750&#160;F7.5<br><br>DATASET&#160;NAME&#160;DataSet7&#160;WINDOW=FRONT.<br>REGRESSION<br>&#160;&#160;/MISSING&#160;LISTWISE<br>&#160;&#160;/STATISTICS&#160;COEFF&#160;OUTS&#160;R&#160;ANOVA&#160;COLLIN&#160;TOL<br>&#160;&#160;/CRITERIA=PIN(.05)&#160;POUT(.10)<br>&#160;&#160;/NOORIGIN<br>&#160;&#160;/DEPENDENT&#160;FAC1<br>&#160;&#160;/METHOD=STEPWISE&#160;s1360&#160;s1370&#160;s1380&#160;s1840&#160;s1870&#160;s1890&#160;s1910&#160;s1920&#160;s2480&#160;s2490&#160;SR550650&#160;SR650750<br>&#160;&#160;/RESIDUALS&#160;DURBIN.</font><BR>  </body><BR></html><BR></p><p class="procedureTitle"><head><style type="text/css">p{color:0;font-family:SansSerif;font-size:14pt;font-style:normal;font-weight:bold;text-decoration:none}</style></head><BR>Regression</p>
+<div>
+<style>
+*{
+border-collapse:collapse;
+}
+.Default .title{
+background-color:#ffffff;
+padding-top:1pt;
+color:#010205;
+font-weight:bold;
+padding-left:6pt;
+vertical-align:middle;
+font-size:11pt;
+padding-bottom:6pt;
+font-family:sans-serif;
+text-align:center;
+padding-right:8pt;
+}
+.Default .layers{
+background-color:#ffffff;
+padding-top:1pt;
+color:#010205;
+font-weight:normal;
+padding-left:6pt;
+vertical-align:bottom;
+font-size:9pt;
+padding-bottom:3pt;
+font-family:sans-serif;
+text-align:left;
+padding-right:8pt;
+}
+.Default .cornerLabels{
+background-color:#ffffff;
+padding-top:3pt;
+color:#264a60;
+font-weight:normal;
+padding-left:6pt;
+vertical-align:bottom;
+font-size:9pt;
+padding-bottom:1pt;
+font-family:sans-serif;
+text-align:left;
+padding-right:8pt;
+}
+.Default .columnLabels{
+background-color:#ffffff;
+padding-top:2pt;
+color:#264a60;
+font-weight:normal;
+padding-left:6pt;
+vertical-align:bottom;
+font-size:9pt;
+padding-bottom:2pt;
+font-family:sans-serif;
+text-align:center;
+padding-right:8pt;
+}
+.Default .rowLabels{
+background-color:#e0e0e0;
+padding-top:3pt;
+color:#264a60;
+font-weight:normal;
+padding-left:6pt;
+vertical-align:top;
+font-size:9pt;
+padding-bottom:2pt;
+font-family:sans-serif;
+text-align:left;
+padding-right:8pt;
+}
+.Default .o, .Default .e{
+background-color:#f9f9fb;
+padding-top:3pt;
+color:#010205;
+font-weight:normal;
+padding-left:6pt;
+vertical-align:top;
+font-size:9pt;
+padding-bottom:2pt;
+font-family:sans-serif;
+text-align:right;
+padding-right:8pt;
+}
+.Default .o{
+background-color:null;
+color:null;
+}
+.Default .e{
+background-color:#f9f9fb;
+color:#010205;
+}
+.Default .caption{
+background-color:#ffffff;
+padding-top:1pt;
+color:#010205;
+font-weight:normal;
+padding-left:6pt;
+vertical-align:top;
+font-size:9pt;
+padding-bottom:1pt;
+font-family:sans-serif;
+text-align:left;
+padding-right:8pt;
+}
+.Default .footnotes{
+background-color:#ffffff;
+padding-top:2pt;
+color:#010205;
+font-weight:normal;
+padding-left:18pt;
+vertical-align:top;
+font-size:9pt;
+padding-bottom:3pt;
+font-family:sans-serif;
+text-align:left;
+padding-right:18pt;
+}
+.Default .titleLayerSeparator{
+border-top:1px none #152935;
+}
+.Default .innerFrameBd{
+border-top:1px none #152935;
+border-right:1px none #152935;
+border-left:1px none #152935;
+border-bottom:1px solid #152935;
+}
+.Default .dataAreaLeft{
+border-left:1px none #152935;
+}
+.Default .dataAreaTop{
+border-top:1px solid #152935;
+}
+.Default .hCR{
+border-top:1px solid #aeaeae;
+}
+.Default .hDR{
+border-top:1px none #aeaeae;
+}
+.Default .vCR{
+border-left:1px none #aeaeae;
+}
+.Default .vDR{
+border-left:1px none #aeaeae;
+}
+.Default .hCC{
+border-bottom:1px none #aeaeae;
+}
+.Default .hDC{
+border-bottom:1px none #aeaeae;
+}
+.Default .vCC{
+border-right:1px solid #e0e0e0;
+}
+.Default .vDC{
+border-right:1px none #aeaeae;
+}
+</style>
+</div>
+<div class="itemBody">
+<table summary="Notes, table, 0 levels of column headers and 2 levels of row headers, table with 3 columns and 16 rows" style="width:471px" class="Default PivotTable" aria-label="Notes" role="complementary" data-lookName="Default" data-rowLabelWidth="2" data-colLabelHeight="0" data-NumRows="15" data-NumCols="1" data-rowLabels="Corner" data-decimal-char="." data-col-labels="" data-row-labels="Output Created ;Comments ;Input Data; Active Dataset; Filter; Weight; Split File; N of Rows in Working Data File;Missing Value Handling Definition of Missing; Cases Used;Syntax ;Resources Processor Time; Elapsed Time; Memory Required; Additional Memory Required for Residual Plots" data-layer-dimension="" data-column-dimension="" data-row-dimension="Contents;" data-maxColWidth="122">
+<caption class="title" style="width:471px">Notes<span class="details">Notes, table, 0 levels of column headers and 2 levels of row headers, table with 3 columns and 16 rows</span></caption>
+<tbody class="PivotBody defaultLayer innerFrameBd">
+<tr>
+<th class="rowLabels dataAreaTop role3" colspan="2">Output Created</th>
+<td class=" o dataAreaTop dataAreaLeft">01-OCT-2020 15:01:10</td>
+</tr>
+<tr>
+<th class="rowLabels hCR role3" colspan="2">Comments</th>
+<td class=" e dataAreaLeft hCR" style="text-align:left;">&nbsp;</td>
+</tr>
+<tr>
+<th class="rowLabels hCR role2" rowspan="6">Input</th>
+<th class="rowLabels hCR vCR role3">Data</th>
+<td class=" o dataAreaLeft hCR" style="text-align:left;">C:\Users\yichu\Work\Year2020\Geography\Student_Research\Sarigai\Manuscript\Environ_Pollu\Fact1_Bands.csv</td>
+</tr>
+<tr>
+<th class="rowLabels hCR vCR role3">Active Dataset</th>
+<td class=" e dataAreaLeft hCR" style="text-align:left;">DataSet7</td>
+</tr>
+<tr>
+<th class="rowLabels hCR vCR role3">Filter</th>
+<td class=" o dataAreaLeft hCR" style="text-align:left;">&lt;none&gt;</td>
+</tr>
+<tr>
+<th class="rowLabels hCR vCR role3">Weight</th>
+<td class=" e dataAreaLeft hCR" style="text-align:left;">&lt;none&gt;</td>
+</tr>
+<tr>
+<th class="rowLabels hCR vCR role3">Split File</th>
+<td class=" o dataAreaLeft hCR" style="text-align:left;">&lt;none&gt;</td>
+</tr>
+<tr>
+<th class="rowLabels hCR vCR role3">N of Rows in Working Data File</th>
+<td class=" e dataAreaLeft hCR">52</td>
+</tr>
+<tr>
+<th class="rowLabels hCR role2" rowspan="2">Missing Value Handling</th>
+<th class="rowLabels hCR vCR role3">Definition of Missing</th>
+<td class=" o dataAreaLeft hCR" style="text-align:left;">User-defined missing values are treated as missing.</td>
+</tr>
+<tr>
+<th class="rowLabels hCR vCR role3">Cases Used</th>
+<td class=" e dataAreaLeft hCR" style="text-align:left;">Statistics are based on cases with no missing values for any variable used.</td>
+</tr>
+<tr>
+<th class="rowLabels hCR role3" colspan="2">Syntax</th>
+<td class=" o dataAreaLeft hCR" style="text-align:left;">REGRESSION<br>  /MISSING LISTWISE<br>  /STATISTICS COEFF OUTS R ANOVA COLLIN TOL<br>  /CRITERIA=PIN(.05) POUT(.10)<br>  /NOORIGIN<br>  /DEPENDENT FAC1<br>  /METHOD=STEPWISE s1360 s1370 s1380 s1840 s1870 s1890 s1910 s1920 s2480 s2490 SR550650 SR650750<br>  /RESIDUALS DURBIN.</td>
+</tr>
+<tr>
+<th class="rowLabels hCR role2" rowspan="4">Resources</th>
+<th class="rowLabels hCR vCR role3">Processor Time</th>
+<td class=" e dataAreaLeft hCR">00:00:00.03</td>
+</tr>
+<tr>
+<th class="rowLabels hCR vCR role3">Elapsed Time</th>
+<td class=" o dataAreaLeft hCR">00:00:00.04</td>
+</tr>
+<tr>
+<th class="rowLabels hCR vCR role3">Memory Required</th>
+<td class=" e dataAreaLeft hCR" style="text-align:left;">12912 bytes</td>
+</tr>
+<tr>
+<th class="rowLabels hCR vCR role3">Additional Memory Required for Residual Plots</th>
+<td class=" o dataAreaLeft hCR">01-OCT-2020 15:01:10</td>
+</tr>
+<tr>
+<td  style="width:149px;padding:0px;border-spacing:0px"></td>
+<td  style="width:160px;padding:0px;border-spacing:0px"></td>
+<td  style="width:162px;padding:0px;border-spacing:0px"></td>
+</tr>
+</tbody>
+</table>
+</div><p align="left"><head><style type="text/css">p{color:0;font-family:Monospaced;font-size:12pt;font-style:normal;font-weight:normal;text-decoration:none}</style></head><BR>[DataSet7]&nbsp;</p>
+<div>
+<table class="pivot" data-rows="1,0,1,3,0,1" data-cols="1,3" data-heights="30,0,36,381,22" data-widths="52,340" data-curCounts="3,3" data-curSizess="3,3">
+<caption colspan="4" title="a. Dependent Variable: FAC1">Variables Entered/Removed<sup>a</sup></caption>
+<thead>
+<tr><th class="cornerLabels">Model</th><th>Variables Entered</th><th>Variables Removed</th><th>Method</th></tr>
+</thead>
+<tbody data-rect="0,2,0,2">
+<tr><th style="min-width:52px">1</th><td class=" hal" style="min-width:96px">s1370</td><td style="min-width:96px">.</td><td class=" hal" style="min-width:96px">Stepwise (Criteria: Probability-of-F-to-enter &lt;= .050, Probability-of-F-to-remove &gt;= .100).</td></tr>
+<tr><th>2</th><td class=" hal">s1910</td><td>.</td><td class=" hal">Stepwise (Criteria: Probability-of-F-to-enter &lt;= .050, Probability-of-F-to-remove &gt;= .100).</td></tr>
+<tr><th>3</th><td class=" hal">SR550650</td><td>.</td><td class=" hal">Stepwise (Criteria: Probability-of-F-to-enter &lt;= .050, Probability-of-F-to-remove &gt;= .100).</td></tr>
+</tbody>
+<tfoot>
+<tr><td colspan="4">a.&nbsp;Dependent Variable: FAC1</td></tr>
+</tfoot>
+</table>
+</div>
+</div>
+<div>
+<table class="pivot" data-rows="1,0,1,3,0,4" data-cols="1,5" data-heights="30,0,36,72,88" data-widths="52,478" data-curCounts="3,5" data-curSizess="3,5">
+<caption colspan="6" title="d. Dependent Variable: FAC1">Model Summary<sup>d</sup></caption>
+<thead>
+<tr><th class="cornerLabels">Model</th><th>R</th><th>R Square</th><th>Adjusted R Square</th><th>Std. Error of the Estimate</th><th>Durbin-Watson</th></tr>
+</thead>
+<tbody data-rect="0,2,0,4">
+<tr><th style="min-width:52px">1</th><td style="min-width:67px" title="a. Predictors: (Constant), s1370">.656<sup>a</sup></td><td style="min-width:71px">.431</td><td style="min-width:96px">.420</td><td style="min-width:96px">.76184407</td><td class=" hal" style="min-width:96px">&nbsp;</td></tr>
+<tr><th>2</th><td title="b. Predictors: (Constant), s1370, s1910">.709<sup>b</sup></td><td>.503</td><td>.483</td><td>.71915411</td><td class=" hal">&nbsp;</td></tr>
+<tr><th>3</th><td title="c. Predictors: (Constant), s1370, s1910, SR550650">.737<sup>c</sup></td><td>.543</td><td>.514</td><td>.69697486</td><td>1.281</td></tr>
+</tbody>
+<tfoot>
+<tr><td colspan="6">a.&nbsp;Predictors: (Constant), s1370</td></tr>
+<tr><td colspan="6">b.&nbsp;Predictors: (Constant), s1370, s1910</td></tr>
+<tr><td colspan="6">c.&nbsp;Predictors: (Constant), s1370, s1910, SR550650</td></tr>
+<tr><td colspan="6">d.&nbsp;Dependent Variable: FAC1</td></tr>
+</tfoot>
+</table>
+</div>
+</div>
+<div>
+<table class="pivot" data-rows="1,0,1,9,0,4" data-cols="2,5" data-heights="30,0,36,204,88" data-widths="132,521" data-curCounts="9,5" data-curSizess="9,5">
+<caption colspan="7" title="a. Dependent Variable: FAC1">ANOVA<sup>a</sup></caption>
+<thead>
+<tr><th class="cornerLabels" colspan="2">Model</th><th>Sum of Squares</th><th>df</th><th>Mean Square</th><th>F</th><th>Sig.</th></tr>
+</thead>
+<tbody data-rect="0,8,0,4">
+<tr><th rowspan="3" style="min-width:48px">1</th><th style="min-width:84px">Regression</th><td style="min-width:96px">21.980</td><td style="min-width:67px">1</td><td style="min-width:92px">21.980</td><td style="min-width:67px">37.870</td><td style="min-width:67px" title="b. Predictors: (Constant), s1370">.000<sup>b</sup></td></tr>
+<tr><th>Residual</th><td>29.020</td><td>50</td><td>.580</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td></tr>
+<tr><th>Total</th><td>51.000</td><td>51</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td></tr>
+<tr><th rowspan="3">2</th><th>Regression</th><td>25.658</td><td>2</td><td>12.829</td><td>24.806</td><td title="c. Predictors: (Constant), s1370, s1910">.000<sup>c</sup></td></tr>
+<tr><th>Residual</th><td>25.342</td><td>49</td><td>.517</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td></tr>
+<tr><th>Total</th><td>51.000</td><td>51</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td></tr>
+<tr><th rowspan="3">3</th><th>Regression</th><td>27.683</td><td>3</td><td>9.228</td><td>18.996</td><td title="d. Predictors: (Constant), s1370, s1910, SR550650">.000<sup>d</sup></td></tr>
+<tr><th>Residual</th><td>23.317</td><td>48</td><td>.486</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td></tr>
+<tr><th>Total</th><td>51.000</td><td>51</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td></tr>
+</tbody>
+<tfoot>
+<tr><td colspan="7">a.&nbsp;Dependent Variable: FAC1</td></tr>
+<tr><td colspan="7">b.&nbsp;Predictors: (Constant), s1370</td></tr>
+<tr><td colspan="7">c.&nbsp;Predictors: (Constant), s1370, s1910</td></tr>
+<tr><td colspan="7">d.&nbsp;Predictors: (Constant), s1370, s1910, SR550650</td></tr>
+</tfoot>
+</table>
+</div>
+</div>
+<div>
+<table class="pivot" data-rows="1,0,2,9,0,1" data-cols="2,7" data-heights="30,0,57,198,22" data-widths="126,671" data-curCounts="9,7" data-curSizess="9,7">
+<caption colspan="9" title="a. Dependent Variable: FAC1">Coefficients<sup>a</sup></caption>
+<thead>
+<tr><th class="cornerLabels" rowspan="2" colspan="2">Model</th><th colspan="2">Unstandardized Coefficients</th><th>Standardized Coefficients</th><th rowspan="2">t</th><th rowspan="2">Sig.</th><th>Collinearity Statistics</th></tr>
+<tr><th>B</th><th>Std. Error</th><th>Beta</th><th>Tolerance</th><th>VIF</th></tr>
+</thead>
+<tbody data-rect="0,8,0,6">
+<tr><th rowspan="2" style="min-width:48px">1</th><th style="min-width:78px">(Constant)</th><td style="min-width:87px">.658</td><td style="min-width:87px">.150</td><td class=" hal" style="min-width:96px">&nbsp;</td><td style="min-width:67px">4.376</td><td style="min-width:67px">.000</td><td class=" hal" style="min-width:74px">&nbsp;</td><td class=" hal" style="min-width:67px">&nbsp;</td></tr>
+<tr><th>s1370</th><td>-2.952</td><td>.480</td><td>-.656</td><td>-6.154</td><td>.000</td><td>1.000</td><td>1.000</td></tr>
+<tr><th rowspan="3">2</th><th>(Constant)</th><td>.341</td><td>.185</td><td class=" hal">&nbsp;</td><td>1.846</td><td>.071</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td></tr>
+<tr><th>s1370</th><td>-3.397</td><td>.483</td><td>-.755</td><td>-7.039</td><td>.000</td><td>.881</td><td>1.136</td></tr>
+<tr><th>s1910</th><td>1.212</td><td>.455</td><td>.286</td><td>2.667</td><td>.010</td><td>.881</td><td>1.136</td></tr>
+<tr><th rowspan="4">3</th><th>(Constant)</th><td>1.210</td><td>.462</td><td class=" hal">&nbsp;</td><td>2.621</td><td>.012</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td></tr>
+<tr><th>s1370</th><td>-2.611</td><td>.605</td><td>-.581</td><td>-4.313</td><td>.000</td><td>.525</td><td>1.904</td></tr>
+<tr><th>s1910</th><td>1.366</td><td>.447</td><td>.323</td><td>3.057</td><td>.004</td><td>.855</td><td>1.169</td></tr>
+<tr><th>SR550650</th><td>-.868</td><td>.425</td><td>-.276</td><td>-2.042</td><td>.047</td><td>.523</td><td>1.912</td></tr>
+</tbody>
+<tfoot>
+<tr><td colspan="9">a.&nbsp;Dependent Variable: FAC1</td></tr>
+</tfoot>
+</table>
+</div>
+</div>
+<div>
+<table class="pivot" data-rows="1,0,2,30,0,4" data-cols="2,7" data-heights="30,0,57,720,88" data-widths="126,660" data-curCounts="30,7" data-curSizess="30,7">
+<caption colspan="9" title="a. Dependent Variable: FAC1">Excluded Variables<sup>a</sup></caption>
+<thead>
+<tr><th class="cornerLabels" rowspan="2" colspan="2">Model</th><th rowspan="2">Beta In</th><th rowspan="2">t</th><th rowspan="2">Sig.</th><th rowspan="2">Partial Correlation</th><th colspan="2">Collinearity Statistics</th></tr>
+<tr><th>Tolerance</th><th>VIF</th><th>Minimum Tolerance</th></tr>
+</thead>
+<tbody data-rect="0,29,0,6">
+<tr><th rowspan="11" style="min-width:48px">1</th><th style="min-width:78px">s1360</th><td style="min-width:67px" title="b. Predictors in the Model: (Constant), s1370">-.169<sup>b</sup></td><td style="min-width:67px">-.888</td><td style="min-width:67px">.379</td><td style="min-width:96px">-.126</td><td style="min-width:74px">.314</td><td style="min-width:67px">3.181</td><td style="min-width:96px">.314</td></tr>
+<tr><th>s1380</th><td title="b. Predictors in the Model: (Constant), s1370">-.018<sup>b</sup></td><td>-.069</td><td>.945</td><td>-.010</td><td>.179</td><td>5.583</td><td>.179</td></tr>
+<tr><th>s1840</th><td title="b. Predictors in the Model: (Constant), s1370">.145<sup>b</sup></td><td>1.355</td><td>.181</td><td>.190</td><td>.978</td><td>1.022</td><td>.978</td></tr>
+<tr><th>s1870</th><td title="b. Predictors in the Model: (Constant), s1370">.205<sup>b</sup></td><td>1.964</td><td>.055</td><td>.270</td><td>.984</td><td>1.017</td><td>.984</td></tr>
+<tr><th>s1890</th><td title="b. Predictors in the Model: (Constant), s1370">.181<sup>b</sup></td><td>1.627</td><td>.110</td><td>.226</td><td>.894</td><td>1.119</td><td>.894</td></tr>
+<tr><th>s1910</th><td title="b. Predictors in the Model: (Constant), s1370">.286<sup>b</sup></td><td>2.667</td><td>.010</td><td>.356</td><td>.881</td><td>1.136</td><td>.881</td></tr>
+<tr><th>s1920</th><td title="b. Predictors in the Model: (Constant), s1370">.270<sup>b</sup></td><td>2.378</td><td>.021</td><td>.322</td><td>.806</td><td>1.241</td><td>.806</td></tr>
+<tr><th>s2480</th><td title="b. Predictors in the Model: (Constant), s1370">-.082<sup>b</sup></td><td>-.513</td><td>.610</td><td>-.073</td><td>.447</td><td>2.239</td><td>.447</td></tr>
+<tr><th>s2490</th><td title="b. Predictors in the Model: (Constant), s1370">.015<sup>b</sup></td><td>.130</td><td>.897</td><td>.019</td><td>.862</td><td>1.160</td><td>.862</td></tr>
+<tr><th>SR550650</th><td title="b. Predictors in the Model: (Constant), s1370">-.206<sup>b</sup></td><td>-1.430</td><td>.159</td><td>-.200</td><td>.538</td><td>1.857</td><td>.538</td></tr>
+<tr><th>SR650750</th><td title="b. Predictors in the Model: (Constant), s1370">-.027<sup>b</sup></td><td>-.207</td><td>.837</td><td>-.030</td><td>.664</td><td>1.507</td><td>.664</td></tr>
+<tr><th rowspan="10">2</th><th>s1360</th><td title="c. Predictors in the Model: (Constant), s1370, s1910">-.198<sup>c</sup></td><td>-1.102</td><td>.276</td><td>-.157</td><td>.313</td><td>3.192</td><td>.307</td></tr>
+<tr><th>s1380</th><td title="c. Predictors in the Model: (Constant), s1370, s1910">-.274<sup>c</sup></td><td>-1.080</td><td>.286</td><td>-.154</td><td>.157</td><td>6.366</td><td>.157</td></tr>
+<tr><th>s1840</th><td title="c. Predictors in the Model: (Constant), s1370, s1910">.108<sup>c</sup></td><td>1.049</td><td>.299</td><td>.150</td><td>.958</td><td>1.044</td><td>.862</td></tr>
+<tr><th>s1870</th><td title="c. Predictors in the Model: (Constant), s1370, s1910">.116<sup>c</sup></td><td>1.048</td><td>.300</td><td>.150</td><td>.828</td><td>1.208</td><td>.741</td></tr>
+<tr><th>s1890</th><td title="c. Predictors in the Model: (Constant), s1370, s1910">.026<sup>c</sup></td><td>.201</td><td>.841</td><td>.029</td><td>.600</td><td>1.667</td><td>.591</td></tr>
+<tr><th>s1920</th><td title="c. Predictors in the Model: (Constant), s1370, s1910">.139<sup>c</sup></td><td>.980</td><td>.332</td><td>.140</td><td>.503</td><td>1.988</td><td>.503</td></tr>
+<tr><th>s2480</th><td title="c. Predictors in the Model: (Constant), s1370, s1910">-.206<sup>c</sup></td><td>-1.327</td><td>.191</td><td>-.188</td><td>.414</td><td>2.415</td><td>.414</td></tr>
+<tr><th>s2490</th><td title="c. Predictors in the Model: (Constant), s1370, s1910">-.075<sup>c</sup></td><td>-.656</td><td>.515</td><td>-.094</td><td>.790</td><td>1.265</td><td>.790</td></tr>
+<tr><th>SR550650</th><td title="c. Predictors in the Model: (Constant), s1370, s1910">-.276<sup>c</sup></td><td>-2.042</td><td>.047</td><td>-.283</td><td>.523</td><td>1.912</td><td>.523</td></tr>
+<tr><th>SR650750</th><td title="c. Predictors in the Model: (Constant), s1370, s1910">-.044<sup>c</sup></td><td>-.356</td><td>.723</td><td>-.051</td><td>.662</td><td>1.511</td><td>.598</td></tr>
+<tr><th rowspan="9">3</th><th>s1360</th><td title="d. Predictors in the Model: (Constant), s1370, s1910, SR550650">-.207<sup>d</sup></td><td>-1.191</td><td>.240</td><td>-.171</td><td>.313</td><td>3.194</td><td>.244</td></tr>
+<tr><th>s1380</th><td title="d. Predictors in the Model: (Constant), s1370, s1910, SR550650">-.202<sup>d</sup></td><td>-.806</td><td>.424</td><td>-.117</td><td>.153</td><td>6.520</td><td>.153</td></tr>
+<tr><th>s1840</th><td title="d. Predictors in the Model: (Constant), s1370, s1910, SR550650">.127<sup>d</sup></td><td>1.274</td><td>.209</td><td>.183</td><td>.950</td><td>1.052</td><td>.519</td></tr>
+<tr><th>s1870</th><td title="d. Predictors in the Model: (Constant), s1370, s1910, SR550650">.139<sup>d</sup></td><td>1.298</td><td>.201</td><td>.186</td><td>.819</td><td>1.220</td><td>.518</td></tr>
+<tr><th>s1890</th><td title="d. Predictors in the Model: (Constant), s1370, s1910, SR550650">.178<sup>d</sup></td><td>1.270</td><td>.210</td><td>.182</td><td>.479</td><td>2.088</td><td>.417</td></tr>
+<tr><th>s1920</th><td title="d. Predictors in the Model: (Constant), s1370, s1910, SR550650">.177<sup>d</sup></td><td>1.285</td><td>.205</td><td>.184</td><td>.495</td><td>2.020</td><td>.495</td></tr>
+<tr><th>s2480</th><td title="d. Predictors in the Model: (Constant), s1370, s1910, SR550650">-.209<sup>d</sup></td><td>-1.391</td><td>.171</td><td>-.199</td><td>.414</td><td>2.416</td><td>.330</td></tr>
+<tr><th>s2490</th><td title="d. Predictors in the Model: (Constant), s1370, s1910, SR550650">-.061<sup>d</sup></td><td>-.552</td><td>.584</td><td>-.080</td><td>.787</td><td>1.270</td><td>.508</td></tr>
+<tr><th>SR650750</th><td title="d. Predictors in the Model: (Constant), s1370, s1910, SR550650">-.156<sup>d</sup></td><td>-1.215</td><td>.230</td><td>-.175</td><td>.572</td><td>1.749</td><td>.452</td></tr>
+</tbody>
+<tfoot>
+<tr><td colspan="9">a.&nbsp;Dependent Variable: FAC1</td></tr>
+<tr><td colspan="9">b.&nbsp;Predictors in the Model: (Constant), s1370</td></tr>
+<tr><td colspan="9">c.&nbsp;Predictors in the Model: (Constant), s1370, s1910</td></tr>
+<tr><td colspan="9">d.&nbsp;Predictors in the Model: (Constant), s1370, s1910, SR550650</td></tr>
+</tfoot>
+</table>
+</div>
+</div>
+<div>
+<table class="pivot" data-rows="1,0,2,9,0,1" data-cols="2,6" data-heights="30,0,42,198,22" data-widths="132,597" data-curCounts="9,6" data-curSizess="9,6">
+<caption colspan="8" title="a. Dependent Variable: FAC1">Collinearity Diagnostics<sup>a</sup></caption>
+<thead>
+<tr><th class="cornerLabels" rowspan="2">Model</th><th class="cornerLabels" rowspan="2">Dimension</th><th rowspan="2">Eigenvalue</th><th rowspan="2">Condition Index</th><th colspan="3">Variance Proportions</th></tr>
+<tr><th>(Constant)</th><th>s1370</th><th>s1910</th><th>SR550650</th></tr>
+</thead>
+<tbody data-rect="0,8,0,5">
+<tr><th rowspan="2" style="min-width:52px">1</th><th style="min-width:80px">1</th><td style="min-width:80px">1.711</td><td style="min-width:96px">1.000</td><td style="min-width:77px">.14</td><td style="min-width:67px">.14</td><td class=" hal" style="min-width:67px">&nbsp;</td><td class=" hal" style="min-width:78px">&nbsp;</td></tr>
+<tr><th>2</th><td>.289</td><td>2.434</td><td>.86</td><td>.86</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td></tr>
+<tr><th rowspan="3">2</th><th>1</th><td>2.509</td><td>1.000</td><td>.04</td><td>.05</td><td>.04</td><td class=" hal">&nbsp;</td></tr>
+<tr><th>2</th><td>.318</td><td>2.811</td><td>.17</td><td>.94</td><td>.11</td><td class=" hal">&nbsp;</td></tr>
+<tr><th>3</th><td>.174</td><td>3.802</td><td>.79</td><td>.01</td><td>.85</td><td class=" hal">&nbsp;</td></tr>
+<tr><th rowspan="4">3</th><th>1</th><td>3.450</td><td>1.000</td><td>.00</td><td>.02</td><td>.02</td><td>.00</td></tr>
+<tr><th>2</th><td>.327</td><td>3.250</td><td>.02</td><td>.60</td><td>.04</td><td>.00</td></tr>
+<tr><th>3</th><td>.206</td><td>4.096</td><td>.04</td><td>.00</td><td>.94</td><td>.02</td></tr>
+<tr><th>4</th><td>.018</td><td>13.768</td><td>.94</td><td>.38</td><td>.00</td><td>.98</td></tr>
+</tbody>
+<tfoot>
+<tr><td colspan="8">a.&nbsp;Dependent Variable: FAC1</td></tr>
+</tfoot>
+</table>
+</div>
+</div>
+<div>
+<table class="pivot" data-rows="1,0,1,4,0,1" data-cols="1,5" data-heights="30,0,21,88,22" data-widths="129,542" data-curCounts="4,5" data-curSizess="4,5">
+<caption colspan="6" title="a. Dependent Variable: FAC1">Residuals Statistics<sup>a</sup></caption>
+<thead>
+<tr><th class="cornerLabels">&nbsp;</th><th>Minimum</th><th>Maximum</th><th>Mean</th><th>Std. Deviation</th><th>N</th></tr>
+</thead>
+<tbody data-rect="0,3,0,4">
+<tr><th style="min-width:129px">Predicted Value</th><td style="min-width:89px">-1.6958807</td><td style="min-width:85px">1.0413284</td><td style="min-width:78px">-.0000006</td><td style="min-width:94px">.73675084</td><td style="min-width:67px">52</td></tr>
+<tr><th>Residual</th><td>-1.17078209</td><td>1.76830959</td><td>.00000000</td><td>.67616494</td><td>52</td></tr>
+<tr><th>Std. Predicted Value</th><td>-2.302</td><td>1.413</td><td>.000</td><td>1.000</td><td>52</td></tr>
+<tr><th>Std. Residual</th><td>-1.680</td><td>2.537</td><td>.000</td><td>.970</td><td>52</td></tr>
+</tbody>
+<tfoot>
+<tr><td colspan="6">a.&nbsp;Dependent Variable: FAC1</td></tr>
+</tfoot>
+</table>
+</div>
+</div><p align="left"><html><BR>  <head><BR>    <style type="text/css"><BR>      <!--<BR>        p { color: 000000; font-family: Monospaced; font-size: 12pt; font-style: normal; font-weight: normal; text-decoration: none }<BR>      --><BR>    </style><BR>    <BR>  </head><BR>  <body><BR>    <font size="3" face="Monospaced" color="#000000">REGRESSION<br>&#160;&#160;/MISSING&#160;LISTWISE<br>&#160;&#160;/STATISTICS&#160;COEFF&#160;OUTS&#160;R&#160;ANOVA&#160;COLLIN&#160;TOL<br>&#160;&#160;/CRITERIA=PIN(.05)&#160;POUT(.10)<br>&#160;&#160;/NOORIGIN<br>&#160;&#160;/DEPENDENT&#160;FAC1<br>&#160;&#160;/METHOD=BACKWARD&#160;s1360&#160;s1370&#160;s1380&#160;s1840&#160;s1870&#160;s1890&#160;s1910&#160;s1920&#160;s2480&#160;s2490&#160;SR550650&#160;SR650750<br>&#160;&#160;/RESIDUALS&#160;DURBIN.</font><BR>  </body><BR></html><BR></p><p class="procedureTitle"><head><style type="text/css">p{color:0;font-family:SansSerif;font-size:14pt;font-style:normal;font-weight:bold;text-decoration:none}</style></head><BR>Regression</p>
+<div>
+<style>
+*{
+border-collapse:collapse;
+}
+.Default .title{
+background-color:#ffffff;
+padding-top:1pt;
+color:#010205;
+font-weight:bold;
+padding-left:6pt;
+vertical-align:middle;
+font-size:11pt;
+padding-bottom:6pt;
+font-family:sans-serif;
+text-align:center;
+padding-right:8pt;
+}
+.Default .layers{
+background-color:#ffffff;
+padding-top:1pt;
+color:#010205;
+font-weight:normal;
+padding-left:6pt;
+vertical-align:bottom;
+font-size:9pt;
+padding-bottom:3pt;
+font-family:sans-serif;
+text-align:left;
+padding-right:8pt;
+}
+.Default .cornerLabels{
+background-color:#ffffff;
+padding-top:3pt;
+color:#264a60;
+font-weight:normal;
+padding-left:6pt;
+vertical-align:bottom;
+font-size:9pt;
+padding-bottom:1pt;
+font-family:sans-serif;
+text-align:left;
+padding-right:8pt;
+}
+.Default .columnLabels{
+background-color:#ffffff;
+padding-top:2pt;
+color:#264a60;
+font-weight:normal;
+padding-left:6pt;
+vertical-align:bottom;
+font-size:9pt;
+padding-bottom:2pt;
+font-family:sans-serif;
+text-align:center;
+padding-right:8pt;
+}
+.Default .rowLabels{
+background-color:#e0e0e0;
+padding-top:3pt;
+color:#264a60;
+font-weight:normal;
+padding-left:6pt;
+vertical-align:top;
+font-size:9pt;
+padding-bottom:2pt;
+font-family:sans-serif;
+text-align:left;
+padding-right:8pt;
+}
+.Default .o, .Default .e{
+background-color:#f9f9fb;
+padding-top:3pt;
+color:#010205;
+font-weight:normal;
+padding-left:6pt;
+vertical-align:top;
+font-size:9pt;
+padding-bottom:2pt;
+font-family:sans-serif;
+text-align:right;
+padding-right:8pt;
+}
+.Default .o{
+background-color:null;
+color:null;
+}
+.Default .e{
+background-color:#f9f9fb;
+color:#010205;
+}
+.Default .caption{
+background-color:#ffffff;
+padding-top:1pt;
+color:#010205;
+font-weight:normal;
+padding-left:6pt;
+vertical-align:top;
+font-size:9pt;
+padding-bottom:1pt;
+font-family:sans-serif;
+text-align:left;
+padding-right:8pt;
+}
+.Default .footnotes{
+background-color:#ffffff;
+padding-top:2pt;
+color:#010205;
+font-weight:normal;
+padding-left:18pt;
+vertical-align:top;
+font-size:9pt;
+padding-bottom:3pt;
+font-family:sans-serif;
+text-align:left;
+padding-right:18pt;
+}
+.Default .titleLayerSeparator{
+border-top:1px none #152935;
+}
+.Default .innerFrameBd{
+border-top:1px none #152935;
+border-right:1px none #152935;
+border-left:1px none #152935;
+border-bottom:1px solid #152935;
+}
+.Default .dataAreaLeft{
+border-left:1px none #152935;
+}
+.Default .dataAreaTop{
+border-top:1px solid #152935;
+}
+.Default .hCR{
+border-top:1px solid #aeaeae;
+}
+.Default .hDR{
+border-top:1px none #aeaeae;
+}
+.Default .vCR{
+border-left:1px none #aeaeae;
+}
+.Default .vDR{
+border-left:1px none #aeaeae;
+}
+.Default .hCC{
+border-bottom:1px none #aeaeae;
+}
+.Default .hDC{
+border-bottom:1px none #aeaeae;
+}
+.Default .vCC{
+border-right:1px solid #e0e0e0;
+}
+.Default .vDC{
+border-right:1px none #aeaeae;
+}
+</style>
+</div>
+<div class="itemBody">
+<table summary="Notes, table, 0 levels of column headers and 2 levels of row headers, table with 3 columns and 16 rows" style="width:471px" class="Default PivotTable" aria-label="Notes" role="complementary" data-lookName="Default" data-rowLabelWidth="2" data-colLabelHeight="0" data-NumRows="15" data-NumCols="1" data-rowLabels="Corner" data-decimal-char="." data-col-labels="" data-row-labels="Output Created ;Comments ;Input Data; Active Dataset; Filter; Weight; Split File; N of Rows in Working Data File;Missing Value Handling Definition of Missing; Cases Used;Syntax ;Resources Processor Time; Elapsed Time; Memory Required; Additional Memory Required for Residual Plots" data-layer-dimension="" data-column-dimension="" data-row-dimension="Contents;" data-maxColWidth="122">
+<caption class="title" style="width:471px">Notes<span class="details">Notes, table, 0 levels of column headers and 2 levels of row headers, table with 3 columns and 16 rows</span></caption>
+<tbody class="PivotBody defaultLayer innerFrameBd">
+<tr>
+<th class="rowLabels dataAreaTop role3" colspan="2">Output Created</th>
+<td class=" o dataAreaTop dataAreaLeft">01-OCT-2020 15:21:40</td>
+</tr>
+<tr>
+<th class="rowLabels hCR role3" colspan="2">Comments</th>
+<td class=" e dataAreaLeft hCR" style="text-align:left;">&nbsp;</td>
+</tr>
+<tr>
+<th class="rowLabels hCR role2" rowspan="6">Input</th>
+<th class="rowLabels hCR vCR role3">Data</th>
+<td class=" o dataAreaLeft hCR" style="text-align:left;">C:\Users\yichu\Work\Year2020\Geography\Student_Research\Sarigai\Manuscript\Environ_Pollu\Fact1_Bands.csv</td>
+</tr>
+<tr>
+<th class="rowLabels hCR vCR role3">Active Dataset</th>
+<td class=" e dataAreaLeft hCR" style="text-align:left;">DataSet7</td>
+</tr>
+<tr>
+<th class="rowLabels hCR vCR role3">Filter</th>
+<td class=" o dataAreaLeft hCR" style="text-align:left;">&lt;none&gt;</td>
+</tr>
+<tr>
+<th class="rowLabels hCR vCR role3">Weight</th>
+<td class=" e dataAreaLeft hCR" style="text-align:left;">&lt;none&gt;</td>
+</tr>
+<tr>
+<th class="rowLabels hCR vCR role3">Split File</th>
+<td class=" o dataAreaLeft hCR" style="text-align:left;">&lt;none&gt;</td>
+</tr>
+<tr>
+<th class="rowLabels hCR vCR role3">N of Rows in Working Data File</th>
+<td class=" e dataAreaLeft hCR">52</td>
+</tr>
+<tr>
+<th class="rowLabels hCR role2" rowspan="2">Missing Value Handling</th>
+<th class="rowLabels hCR vCR role3">Definition of Missing</th>
+<td class=" o dataAreaLeft hCR" style="text-align:left;">User-defined missing values are treated as missing.</td>
+</tr>
+<tr>
+<th class="rowLabels hCR vCR role3">Cases Used</th>
+<td class=" e dataAreaLeft hCR" style="text-align:left;">Statistics are based on cases with no missing values for any variable used.</td>
+</tr>
+<tr>
+<th class="rowLabels hCR role3" colspan="2">Syntax</th>
+<td class=" o dataAreaLeft hCR" style="text-align:left;">REGRESSION<br>  /MISSING LISTWISE<br>  /STATISTICS COEFF OUTS R ANOVA COLLIN TOL<br>  /CRITERIA=PIN(.05) POUT(.10)<br>  /NOORIGIN<br>  /DEPENDENT FAC1<br>  /METHOD=BACKWARD s1360 s1370 s1380 s1840 s1870 s1890 s1910 s1920 s2480 s2490 SR550650 SR650750<br>  /RESIDUALS DURBIN.</td>
+</tr>
+<tr>
+<th class="rowLabels hCR role2" rowspan="4">Resources</th>
+<th class="rowLabels hCR vCR role3">Processor Time</th>
+<td class=" e dataAreaLeft hCR">00:00:00.03</td>
+</tr>
+<tr>
+<th class="rowLabels hCR vCR role3">Elapsed Time</th>
+<td class=" o dataAreaLeft hCR">00:00:00.02</td>
+</tr>
+<tr>
+<th class="rowLabels hCR vCR role3">Memory Required</th>
+<td class=" e dataAreaLeft hCR" style="text-align:left;">13024 bytes</td>
+</tr>
+<tr>
+<th class="rowLabels hCR vCR role3">Additional Memory Required for Residual Plots</th>
+<td class=" o dataAreaLeft hCR">01-OCT-2020 15:21:40</td>
+</tr>
+<tr>
+<td  style="width:149px;padding:0px;border-spacing:0px"></td>
+<td  style="width:160px;padding:0px;border-spacing:0px"></td>
+<td  style="width:162px;padding:0px;border-spacing:0px"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div>
+<table class="pivot" data-rows="1,0,1,7,0,2" data-cols="1,3" data-heights="30,0,36,681,44" data-widths="52,340" data-curCounts="7,3" data-curSizess="7,3">
+<caption colspan="4" title="a. Dependent Variable: FAC1">Variables Entered/Removed<sup>a</sup></caption>
+<thead>
+<tr><th class="cornerLabels">Model</th><th>Variables Entered</th><th>Variables Removed</th><th>Method</th></tr>
+</thead>
+<tbody data-rect="0,6,0,2">
+<tr><th style="min-width:52px">1</th><td class=" hal" style="min-width:96px" title="b. All requested variables entered.">SR650750, s1920, s1870, s1840, s2490, s1360, s1890, s1910, SR550650, s2480, s1370, s1380<sup>b</sup></td><td style="min-width:96px">.</td><td class=" hal" style="min-width:96px">Enter</td></tr>
+<tr><th>2</th><td>.</td><td class=" hal">s2480</td><td class=" hal">Backward (criterion: Probability of F-to-remove &gt;= .100).</td></tr>
+<tr><th>3</th><td>.</td><td class=" hal">s1380</td><td class=" hal">Backward (criterion: Probability of F-to-remove &gt;= .100).</td></tr>
+<tr><th>4</th><td>.</td><td class=" hal">s1910</td><td class=" hal">Backward (criterion: Probability of F-to-remove &gt;= .100).</td></tr>
+<tr><th>5</th><td>.</td><td class=" hal">s1360</td><td class=" hal">Backward (criterion: Probability of F-to-remove &gt;= .100).</td></tr>
+<tr><th>6</th><td>.</td><td class=" hal">s1840</td><td class=" hal">Backward (criterion: Probability of F-to-remove &gt;= .100).</td></tr>
+<tr><th>7</th><td>.</td><td class=" hal">s1870</td><td class=" hal">Backward (criterion: Probability of F-to-remove &gt;= .100).</td></tr>
+</tbody>
+<tfoot>
+<tr><td colspan="4">a.&nbsp;Dependent Variable: FAC1</td></tr>
+<tr><td colspan="4">b.&nbsp;All requested variables entered.</td></tr>
+</tfoot>
+</table>
+</div>
+</div>
+<div>
+<table class="pivot" data-rows="1,0,1,7,0,8" data-cols="1,5" data-heights="30,0,36,168,266" data-widths="52,478" data-curCounts="7,5" data-curSizess="7,5">
+<caption colspan="6" title="h. Dependent Variable: FAC1">Model Summary<sup>h</sup></caption>
+<thead>
+<tr><th class="cornerLabels">Model</th><th>R</th><th>R Square</th><th>Adjusted R Square</th><th>Std. Error of the Estimate</th><th>Durbin-Watson</th></tr>
+</thead>
+<tbody data-rect="0,6,0,4">
+<tr><th style="min-width:52px">1</th><td style="min-width:67px" title="a. Predictors: (Constant), SR650750, s1920, s1870, s1840, s2490, s1360, s1890, s1910, SR550650, s2480, s1370, s1380">.815<sup>a</sup></td><td style="min-width:71px">.664</td><td style="min-width:96px">.560</td><td style="min-width:96px">.66320653</td><td class=" hal" style="min-width:96px">&nbsp;</td></tr>
+<tr><th>2</th><td title="b. Predictors: (Constant), SR650750, s1920, s1870, s1840, s2490, s1360, s1890, s1910, SR550650, s1370, s1380">.814<sup>b</sup></td><td>.663</td><td>.570</td><td>.65545198</td><td class=" hal">&nbsp;</td></tr>
+<tr><th>3</th><td title="c. Predictors: (Constant), SR650750, s1920, s1870, s1840, s2490, s1360, s1890, s1910, SR550650, s1370">.814<sup>c</sup></td><td>.662</td><td>.579</td><td>.64855344</td><td class=" hal">&nbsp;</td></tr>
+<tr><th>4</th><td title="d. Predictors: (Constant), SR650750, s1920, s1870, s1840, s2490, s1360, s1890, SR550650, s1370">.813<sup>d</sup></td><td>.660</td><td>.588</td><td>.64216216</td><td class=" hal">&nbsp;</td></tr>
+<tr><th>5</th><td title="e. Predictors: (Constant), SR650750, s1920, s1870, s1840, s2490, s1890, SR550650, s1370">.808<sup>e</sup></td><td>.652</td><td>.588</td><td>.64218875</td><td class=" hal">&nbsp;</td></tr>
+<tr><th>6</th><td title="f. Predictors: (Constant), SR650750, s1920, s1870, s2490, s1890, SR550650, s1370">.798<sup>f</sup></td><td>.637</td><td>.579</td><td>.64872278</td><td class=" hal">&nbsp;</td></tr>
+<tr><th>7</th><td title="g. Predictors: (Constant), SR650750, s1920, s2490, s1890, SR550650, s1370">.785<sup>g</sup></td><td>.617</td><td>.565</td><td>.65924193</td><td>1.263</td></tr>
+</tbody>
+<tfoot>
+<tr><td colspan="6">a.&nbsp;Predictors: (Constant), SR650750, s1920, s1870, s1840, s2490, s1360, s1890, s1910, SR550650, s2480, s1370, s1380</td></tr>
+<tr><td colspan="6">b.&nbsp;Predictors: (Constant), SR650750, s1920, s1870, s1840, s2490, s1360, s1890, s1910, SR550650, s1370, s1380</td></tr>
+<tr><td colspan="6">c.&nbsp;Predictors: (Constant), SR650750, s1920, s1870, s1840, s2490, s1360, s1890, s1910, SR550650, s1370</td></tr>
+<tr><td colspan="6">d.&nbsp;Predictors: (Constant), SR650750, s1920, s1870, s1840, s2490, s1360, s1890, SR550650, s1370</td></tr>
+<tr><td colspan="6">e.&nbsp;Predictors: (Constant), SR650750, s1920, s1870, s1840, s2490, s1890, SR550650, s1370</td></tr>
+<tr><td colspan="6">f.&nbsp;Predictors: (Constant), SR650750, s1920, s1870, s2490, s1890, SR550650, s1370</td></tr>
+<tr><td colspan="6">g.&nbsp;Predictors: (Constant), SR650750, s1920, s2490, s1890, SR550650, s1370</td></tr>
+<tr><td colspan="6">h.&nbsp;Dependent Variable: FAC1</td></tr>
+</tfoot>
+</table>
+</div>
+</div>
+<div>
+<table class="pivot" data-rows="1,0,1,21,0,8" data-cols="2,5" data-heights="30,0,36,476,251" data-widths="132,521" data-curCounts="21,5" data-curSizess="21,5">
+<caption colspan="7" title="a. Dependent Variable: FAC1">ANOVA<sup>a</sup></caption>
+<thead>
+<tr><th class="cornerLabels" colspan="2">Model</th><th>Sum of Squares</th><th>df</th><th>Mean Square</th><th>F</th><th>Sig.</th></tr>
+</thead>
+<tbody data-rect="0,20,0,4">
+<tr><th rowspan="3" style="min-width:48px">1</th><th style="min-width:84px">Regression</th><td style="min-width:96px">33.846</td><td style="min-width:67px">12</td><td style="min-width:92px">2.821</td><td style="min-width:67px">6.413</td><td style="min-width:67px" title="b. Predictors: (Constant), SR650750, s1920, s1870, s1840, s2490, s1360, s1890, s1910, SR550650, s2480, s1370, s1380">.000<sup>b</sup></td></tr>
+<tr><th>Residual</th><td>17.154</td><td>39</td><td>.440</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td></tr>
+<tr><th>Total</th><td>51.000</td><td>51</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td></tr>
+<tr><th rowspan="3">2</th><th>Regression</th><td>33.815</td><td>11</td><td>3.074</td><td>7.155</td><td title="c. Predictors: (Constant), SR650750, s1920, s1870, s1840, s2490, s1360, s1890, s1910, SR550650, s1370, s1380">.000<sup>c</sup></td></tr>
+<tr><th>Residual</th><td>17.185</td><td>40</td><td>.430</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td></tr>
+<tr><th>Total</th><td>51.000</td><td>51</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td></tr>
+<tr><th rowspan="3">3</th><th>Regression</th><td>33.755</td><td>10</td><td>3.375</td><td>8.025</td><td title="d. Predictors: (Constant), SR650750, s1920, s1870, s1840, s2490, s1360, s1890, s1910, SR550650, s1370">.000<sup>d</sup></td></tr>
+<tr><th>Residual</th><td>17.245</td><td>41</td><td>.421</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td></tr>
+<tr><th>Total</th><td>51.000</td><td>51</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td></tr>
+<tr><th rowspan="3">4</th><th>Regression</th><td>33.680</td><td>9</td><td>3.742</td><td>9.075</td><td title="e. Predictors: (Constant), SR650750, s1920, s1870, s1840, s2490, s1360, s1890, SR550650, s1370">.000<sup>e</sup></td></tr>
+<tr><th>Residual</th><td>17.320</td><td>42</td><td>.412</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td></tr>
+<tr><th>Total</th><td>51.000</td><td>51</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td></tr>
+<tr><th rowspan="3">5</th><th>Regression</th><td>33.267</td><td>8</td><td>4.158</td><td>10.083</td><td title="f. Predictors: (Constant), SR650750, s1920, s1870, s1840, s2490, s1890, SR550650, s1370">.000<sup>f</sup></td></tr>
+<tr><th>Residual</th><td>17.733</td><td>43</td><td>.412</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td></tr>
+<tr><th>Total</th><td>51.000</td><td>51</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td></tr>
+<tr><th rowspan="3">6</th><th>Regression</th><td>32.483</td><td>7</td><td>4.640</td><td>11.027</td><td title="g. Predictors: (Constant), SR650750, s1920, s1870, s2490, s1890, SR550650, s1370">.000<sup>g</sup></td></tr>
+<tr><th>Residual</th><td>18.517</td><td>44</td><td>.421</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td></tr>
+<tr><th>Total</th><td>51.000</td><td>51</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td></tr>
+<tr><th rowspan="3">7</th><th>Regression</th><td>31.443</td><td>6</td><td>5.241</td><td>12.058</td><td title="h. Predictors: (Constant), SR650750, s1920, s2490, s1890, SR550650, s1370">.000<sup>h</sup></td></tr>
+<tr><th>Residual</th><td>19.557</td><td>45</td><td>.435</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td></tr>
+<tr><th>Total</th><td>51.000</td><td>51</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td></tr>
+</tbody>
+<tfoot>
+<tr><td colspan="7">a.&nbsp;Dependent Variable: FAC1</td></tr>
+<tr><td colspan="7">b.&nbsp;Predictors: (Constant), SR650750, s1920, s1870, s1840, s2490, s1360, s1890, s1910, SR550650, s2480, s1370, s1380</td></tr>
+<tr><td colspan="7">c.&nbsp;Predictors: (Constant), SR650750, s1920, s1870, s1840, s2490, s1360, s1890, s1910, SR550650, s1370, s1380</td></tr>
+<tr><td colspan="7">d.&nbsp;Predictors: (Constant), SR650750, s1920, s1870, s1840, s2490, s1360, s1890, s1910, SR550650, s1370</td></tr>
+<tr><td colspan="7">e.&nbsp;Predictors: (Constant), SR650750, s1920, s1870, s1840, s2490, s1360, s1890, SR550650, s1370</td></tr>
+<tr><td colspan="7">f.&nbsp;Predictors: (Constant), SR650750, s1920, s1870, s1840, s2490, s1890, SR550650, s1370</td></tr>
+<tr><td colspan="7">g.&nbsp;Predictors: (Constant), SR650750, s1920, s1870, s2490, s1890, SR550650, s1370</td></tr>
+<tr><td colspan="7">h.&nbsp;Predictors: (Constant), SR650750, s1920, s2490, s1890, SR550650, s1370</td></tr>
+</tfoot>
+</table>
+</div>
+</div>
+<div>
+<table class="pivot" data-rows="1,0,2,70,0,1" data-cols="2,7" data-heights="30,0,57,1540,22" data-widths="126,671" data-curCounts="70,7" data-curSizess="70,7">
+<caption colspan="9" title="a. Dependent Variable: FAC1">Coefficients<sup>a</sup></caption>
+<thead>
+<tr><th class="cornerLabels" rowspan="2" colspan="2">Model</th><th colspan="2">Unstandardized Coefficients</th><th>Standardized Coefficients</th><th rowspan="2">t</th><th rowspan="2">Sig.</th><th>Collinearity Statistics</th></tr>
+<tr><th>B</th><th>Std. Error</th><th>Beta</th><th>Tolerance</th><th>VIF</th></tr>
+</thead>
+<tbody data-rect="0,69,0,6">
+<tr><th rowspan="13" style="min-width:48px">1</th><th style="min-width:78px">(Constant)</th><td style="min-width:87px">2.345</td><td style="min-width:87px">.993</td><td class=" hal" style="min-width:96px">&nbsp;</td><td style="min-width:67px">2.360</td><td style="min-width:67px">.023</td><td class=" hal" style="min-width:74px">&nbsp;</td><td class=" hal" style="min-width:67px">&nbsp;</td></tr>
+<tr><th>s1360</th><td>-.752</td><td>1.241</td><td>-.143</td><td>-.606</td><td>.548</td><td>.155</td><td>6.453</td></tr>
+<tr><th>s1370</th><td>-1.667</td><td>1.141</td><td>-.371</td><td>-1.461</td><td>.152</td><td>.134</td><td>7.468</td></tr>
+<tr><th>s1380</th><td>-.444</td><td>1.605</td><td>-.094</td><td>-.277</td><td>.783</td><td>.075</td><td>13.348</td></tr>
+<tr><th>s1840</th><td>.542</td><td>.405</td><td>.140</td><td>1.337</td><td>.189</td><td>.786</td><td>1.273</td></tr>
+<tr><th>s1870</th><td>.856</td><td>.567</td><td>.201</td><td>1.511</td><td>.139</td><td>.486</td><td>2.056</td></tr>
+<tr><th>s1890</th><td>.690</td><td>.582</td><td>.175</td><td>1.185</td><td>.243</td><td>.396</td><td>2.523</td></tr>
+<tr><th>s1910</th><td>.393</td><td>.705</td><td>.093</td><td>.557</td><td>.581</td><td>.311</td><td>3.214</td></tr>
+<tr><th>s1920</th><td>.903</td><td>.541</td><td>.247</td><td>1.669</td><td>.103</td><td>.395</td><td>2.535</td></tr>
+<tr><th>s2480</th><td>-.227</td><td>.856</td><td>-.055</td><td>-.265</td><td>.793</td><td>.203</td><td>4.923</td></tr>
+<tr><th>s2490</th><td>-.796</td><td>.649</td><td>-.183</td><td>-1.226</td><td>.228</td><td>.386</td><td>2.591</td></tr>
+<tr><th>SR550650</th><td>-1.576</td><td>.509</td><td>-.501</td><td>-3.096</td><td>.004</td><td>.330</td><td>3.032</td></tr>
+<tr><th>SR650750</th><td>-.432</td><td>.299</td><td>-.211</td><td>-1.442</td><td>.157</td><td>.402</td><td>2.486</td></tr>
+<tr><th rowspan="12">2</th><th>(Constant)</th><td>2.312</td><td>.974</td><td class=" hal">&nbsp;</td><td>2.373</td><td>.023</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td></tr>
+<tr><th>s1360</th><td>-.710</td><td>1.216</td><td>-.135</td><td>-.584</td><td>.563</td><td>.158</td><td>6.348</td></tr>
+<tr><th>s1370</th><td>-1.740</td><td>1.095</td><td>-.387</td><td>-1.589</td><td>.120</td><td>.142</td><td>7.037</td></tr>
+<tr><th>s1380</th><td>-.570</td><td>1.516</td><td>-.120</td><td>-.376</td><td>.709</td><td>.082</td><td>12.180</td></tr>
+<tr><th>s1840</th><td>.558</td><td>.396</td><td>.144</td><td>1.410</td><td>.166</td><td>.805</td><td>1.243</td></tr>
+<tr><th>s1870</th><td>.924</td><td>.500</td><td>.217</td><td>1.849</td><td>.072</td><td>.611</td><td>1.637</td></tr>
+<tr><th>s1890</th><td>.687</td><td>.575</td><td>.174</td><td>1.194</td><td>.239</td><td>.396</td><td>2.523</td></tr>
+<tr><th>s1910</th><td>.348</td><td>.676</td><td>.082</td><td>.514</td><td>.610</td><td>.330</td><td>3.026</td></tr>
+<tr><th>s1920</th><td>.926</td><td>.528</td><td>.253</td><td>1.754</td><td>.087</td><td>.405</td><td>2.470</td></tr>
+<tr><th>s2490</th><td>-.902</td><td>.505</td><td>-.208</td><td>-1.785</td><td>.082</td><td>.623</td><td>1.606</td></tr>
+<tr><th>SR550650</th><td>-1.568</td><td>.502</td><td>-.498</td><td>-3.122</td><td>.003</td><td>.331</td><td>3.021</td></tr>
+<tr><th>SR650750</th><td>-.428</td><td>.296</td><td>-.209</td><td>-1.447</td><td>.156</td><td>.403</td><td>2.480</td></tr>
+<tr><th rowspan="11">3</th><th>(Constant)</th><td>2.295</td><td>.963</td><td class=" hal">&nbsp;</td><td>2.384</td><td>.022</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td></tr>
+<tr><th>s1360</th><td>-.992</td><td>.948</td><td>-.189</td><td>-1.047</td><td>.301</td><td>.254</td><td>3.937</td></tr>
+<tr><th>s1370</th><td>-1.952</td><td>.928</td><td>-.434</td><td>-2.103</td><td>.042</td><td>.194</td><td>5.168</td></tr>
+<tr><th>s1840</th><td>.553</td><td>.391</td><td>.143</td><td>1.412</td><td>.166</td><td>.806</td><td>1.241</td></tr>
+<tr><th>s1870</th><td>.932</td><td>.494</td><td>.219</td><td>1.887</td><td>.066</td><td>.612</td><td>1.634</td></tr>
+<tr><th>s1890</th><td>.697</td><td>.569</td><td>.177</td><td>1.225</td><td>.228</td><td>.397</td><td>2.518</td></tr>
+<tr><th>s1910</th><td>.266</td><td>.634</td><td>.063</td><td>.420</td><td>.677</td><td>.369</td><td>2.713</td></tr>
+<tr><th>s1920</th><td>.927</td><td>.523</td><td>.253</td><td>1.774</td><td>.084</td><td>.405</td><td>2.470</td></tr>
+<tr><th>s2490</th><td>-.896</td><td>.499</td><td>-.206</td><td>-1.794</td><td>.080</td><td>.623</td><td>1.604</td></tr>
+<tr><th>SR550650</th><td>-1.591</td><td>.493</td><td>-.505</td><td>-3.224</td><td>.002</td><td>.336</td><td>2.977</td></tr>
+<tr><th>SR650750</th><td>-.402</td><td>.284</td><td>-.196</td><td>-1.413</td><td>.165</td><td>.427</td><td>2.343</td></tr>
+<tr><th rowspan="10">4</th><th>(Constant)</th><td>2.309</td><td>.953</td><td class=" hal">&nbsp;</td><td>2.423</td><td>.020</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td></tr>
+<tr><th>s1360</th><td>-.928</td><td>.926</td><td>-.176</td><td>-1.002</td><td>.322</td><td>.261</td><td>3.834</td></tr>
+<tr><th>s1370</th><td>-1.968</td><td>.918</td><td>-.438</td><td>-2.143</td><td>.038</td><td>.194</td><td>5.159</td></tr>
+<tr><th>s1840</th><td>.573</td><td>.385</td><td>.148</td><td>1.491</td><td>.143</td><td>.819</td><td>1.221</td></tr>
+<tr><th>s1870</th><td>.989</td><td>.470</td><td>.232</td><td>2.105</td><td>.041</td><td>.663</td><td>1.509</td></tr>
+<tr><th>s1890</th><td>.785</td><td>.523</td><td>.199</td><td>1.502</td><td>.141</td><td>.461</td><td>2.170</td></tr>
+<tr><th>s1920</th><td>1.042</td><td>.440</td><td>.285</td><td>2.368</td><td>.023</td><td>.560</td><td>1.787</td></tr>
+<tr><th>s2490</th><td>-.905</td><td>.494</td><td>-.208</td><td>-1.832</td><td>.074</td><td>.625</td><td>1.601</td></tr>
+<tr><th>SR550650</th><td>-1.622</td><td>.483</td><td>-.515</td><td>-3.361</td><td>.002</td><td>.344</td><td>2.908</td></tr>
+<tr><th>SR650750</th><td>-.398</td><td>.281</td><td>-.195</td><td>-1.415</td><td>.165</td><td>.427</td><td>2.341</td></tr>
+<tr><th rowspan="9">5</th><th>(Constant)</th><td>2.446</td><td>.943</td><td class=" hal">&nbsp;</td><td>2.593</td><td>.013</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td></tr>
+<tr><th>s1370</th><td>-2.653</td><td>.613</td><td>-.590</td><td>-4.327</td><td>.000</td><td>.435</td><td>2.299</td></tr>
+<tr><th>s1840</th><td>.526</td><td>.382</td><td>.136</td><td>1.378</td><td>.175</td><td>.831</td><td>1.203</td></tr>
+<tr><th>s1870</th><td>.826</td><td>.441</td><td>.194</td><td>1.873</td><td>.068</td><td>.754</td><td>1.327</td></tr>
+<tr><th>s1890</th><td>.889</td><td>.513</td><td>.225</td><td>1.734</td><td>.090</td><td>.479</td><td>2.086</td></tr>
+<tr><th>s1920</th><td>1.127</td><td>.432</td><td>.308</td><td>2.609</td><td>.012</td><td>.581</td><td>1.721</td></tr>
+<tr><th>s2490</th><td>-.968</td><td>.490</td><td>-.223</td><td>-1.976</td><td>.055</td><td>.635</td><td>1.575</td></tr>
+<tr><th>SR550650</th><td>-1.664</td><td>.481</td><td>-.528</td><td>-3.458</td><td>.001</td><td>.346</td><td>2.887</td></tr>
+<tr><th>SR650750</th><td>-.428</td><td>.280</td><td>-.209</td><td>-1.531</td><td>.133</td><td>.432</td><td>2.314</td></tr>
+<tr><th rowspan="8">6</th><th>(Constant)</th><td>2.921</td><td>.887</td><td class=" hal">&nbsp;</td><td>3.295</td><td>.002</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td></tr>
+<tr><th>s1370</th><td>-2.737</td><td>.616</td><td>-.609</td><td>-4.442</td><td>.000</td><td>.439</td><td>2.276</td></tr>
+<tr><th>s1870</th><td>.679</td><td>.432</td><td>.160</td><td>1.572</td><td>.123</td><td>.800</td><td>1.250</td></tr>
+<tr><th>s1890</th><td>.947</td><td>.516</td><td>.240</td><td>1.835</td><td>.073</td><td>.483</td><td>2.072</td></tr>
+<tr><th>s1920</th><td>1.234</td><td>.429</td><td>.337</td><td>2.875</td><td>.006</td><td>.600</td><td>1.666</td></tr>
+<tr><th>s2490</th><td>-.958</td><td>.495</td><td>-.221</td><td>-1.936</td><td>.059</td><td>.635</td><td>1.574</td></tr>
+<tr><th>SR550650</th><td>-1.695</td><td>.485</td><td>-.538</td><td>-3.492</td><td>.001</td><td>.347</td><td>2.880</td></tr>
+<tr><th>SR650750</th><td>-.539</td><td>.271</td><td>-.263</td><td>-1.989</td><td>.053</td><td>.471</td><td>2.124</td></tr>
+<tr><th rowspan="7">7</th><th>(Constant)</th><td>3.270</td><td>.872</td><td class=" hal">&nbsp;</td><td>3.749</td><td>.001</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td></tr>
+<tr><th>s1370</th><td>-2.773</td><td>.626</td><td>-.617</td><td>-4.431</td><td>.000</td><td>.440</td><td>2.273</td></tr>
+<tr><th>s1890</th><td>1.218</td><td>.494</td><td>.309</td><td>2.466</td><td>.018</td><td>.544</td><td>1.840</td></tr>
+<tr><th>s1920</th><td>1.200</td><td>.436</td><td>.328</td><td>2.754</td><td>.008</td><td>.602</td><td>1.661</td></tr>
+<tr><th>s2490</th><td>-.908</td><td>.502</td><td>-.209</td><td>-1.810</td><td>.077</td><td>.638</td><td>1.568</td></tr>
+<tr><th>SR550650</th><td>-1.754</td><td>.492</td><td>-.557</td><td>-3.566</td><td>.001</td><td>.349</td><td>2.863</td></tr>
+<tr><th>SR650750</th><td>-.604</td><td>.272</td><td>-.295</td><td>-2.220</td><td>.031</td><td>.482</td><td>2.075</td></tr>
+</tbody>
+<tfoot>
+<tr><td colspan="9">a.&nbsp;Dependent Variable: FAC1</td></tr>
+</tfoot>
+</table>
+</div>
+</div>
+<div>
+<table class="pivot" data-rows="1,0,2,70,0,1" data-cols="2,15" data-heights="30,0,42,1540,22" data-widths="132,1211" data-curCounts="70,15" data-curSizess="70,15">
+<caption colspan="17" title="a. Dependent Variable: FAC1">Collinearity Diagnostics<sup>a</sup></caption>
+<thead>
+<tr><th class="cornerLabels" rowspan="2">Model</th><th class="cornerLabels" rowspan="2">Dimension</th><th rowspan="2">Eigenvalue</th><th rowspan="2">Condition Index</th><th colspan="12">Variance Proportions</th></tr>
+<tr><th>(Constant)</th><th>s1360</th><th>s1370</th><th>s1380</th><th>s1840</th><th>s1870</th><th>s1890</th><th>s1910</th><th>s1920</th><th>s2480</th><th>s2490</th><th>SR550650</th><th>SR650750</th></tr>
+</thead>
+<tbody data-rect="0,69,0,14">
+<tr><th rowspan="13" style="min-width:52px">1</th><th style="min-width:80px">1</th><td style="min-width:80px">10.344</td><td style="min-width:96px">1.000</td><td style="min-width:77px">.00</td><td style="min-width:67px">.00</td><td style="min-width:67px">.00</td><td style="min-width:67px">.00</td><td style="min-width:67px">.00</td><td style="min-width:67px">.00</td><td style="min-width:67px">.00</td><td style="min-width:67px">.00</td><td style="min-width:67px">.00</td><td style="min-width:67px">.00</td><td style="min-width:67px">.00</td><td style="min-width:78px">.00</td><td style="min-width:78px">.00</td></tr>
+<tr><th>2</th><td>1.079</td><td>3.096</td><td>.00</td><td>.02</td><td>.01</td><td>.01</td><td>.01</td><td>.00</td><td>.00</td><td>.00</td><td>.00</td><td>.01</td><td>.00</td><td>.00</td><td>.01</td></tr>
+<tr><th>3</th><td>.412</td><td>5.011</td><td>.00</td><td>.02</td><td>.00</td><td>.00</td><td>.02</td><td>.00</td><td>.01</td><td>.04</td><td>.17</td><td>.00</td><td>.00</td><td>.00</td><td>.01</td></tr>
+<tr><th>4</th><td>.310</td><td>5.777</td><td>.00</td><td>.01</td><td>.00</td><td>.00</td><td>.20</td><td>.16</td><td>.01</td><td>.01</td><td>.01</td><td>.03</td><td>.01</td><td>.00</td><td>.00</td></tr>
+<tr><th>5</th><td>.250</td><td>6.429</td><td>.00</td><td>.01</td><td>.01</td><td>.00</td><td>.05</td><td>.00</td><td>.01</td><td>.01</td><td>.08</td><td>.07</td><td>.20</td><td>.00</td><td>.00</td></tr>
+<tr><th>6</th><td>.190</td><td>7.386</td><td>.00</td><td>.00</td><td>.01</td><td>.00</td><td>.44</td><td>.04</td><td>.01</td><td>.02</td><td>.05</td><td>.01</td><td>.01</td><td>.00</td><td>.04</td></tr>
+<tr><th>7</th><td>.127</td><td>9.023</td><td>.00</td><td>.05</td><td>.03</td><td>.00</td><td>.00</td><td>.04</td><td>.40</td><td>.00</td><td>.13</td><td>.00</td><td>.10</td><td>.01</td><td>.00</td></tr>
+<tr><th>8</th><td>.113</td><td>9.577</td><td>.00</td><td>.00</td><td>.04</td><td>.00</td><td>.00</td><td>.03</td><td>.02</td><td>.39</td><td>.22</td><td>.11</td><td>.06</td><td>.01</td><td>.01</td></tr>
+<tr><th>9</th><td>.071</td><td>12.072</td><td>.00</td><td>.42</td><td>.10</td><td>.00</td><td>.01</td><td>.30</td><td>.23</td><td>.00</td><td>.00</td><td>.09</td><td>.07</td><td>.00</td><td>.02</td></tr>
+<tr><th>10</th><td>.040</td><td>16.110</td><td>.00</td><td>.04</td><td>.61</td><td>.02</td><td>.00</td><td>.10</td><td>.02</td><td>.32</td><td>.25</td><td>.42</td><td>.34</td><td>.01</td><td>.01</td></tr>
+<tr><th>11</th><td>.034</td><td>17.372</td><td>.01</td><td>.05</td><td>.17</td><td>.19</td><td>.16</td><td>.21</td><td>.10</td><td>.08</td><td>.02</td><td>.19</td><td>.11</td><td>.19</td><td>.07</td></tr>
+<tr><th>12</th><td>.024</td><td>20.652</td><td>.00</td><td>.37</td><td>.02</td><td>.77</td><td>.00</td><td>.00</td><td>.05</td><td>.11</td><td>.00</td><td>.07</td><td>.06</td><td>.15</td><td>.15</td></tr>
+<tr><th>13</th><td>.006</td><td>42.281</td><td>.98</td><td>.02</td><td>.00</td><td>.00</td><td>.11</td><td>.09</td><td>.13</td><td>.00</td><td>.06</td><td>.01</td><td>.04</td><td>.62</td><td>.68</td></tr>
+<tr><th rowspan="12">2</th><th>1</th><td>9.558</td><td>1.000</td><td>.00</td><td>.00</td><td>.00</td><td>.00</td><td>.00</td><td>.00</td><td>.00</td><td>.00</td><td>.00</td><td class=" hal">&nbsp;</td><td>.00</td><td>.00</td><td>.00</td></tr>
+<tr><th>2</th><td>1.009</td><td>3.077</td><td>.00</td><td>.02</td><td>.01</td><td>.01</td><td>.01</td><td>.00</td><td>.00</td><td>.00</td><td>.00</td><td class=" hal">&nbsp;</td><td>.00</td><td>.00</td><td>.01</td></tr>
+<tr><th>3</th><td>.410</td><td>4.826</td><td>.00</td><td>.02</td><td>.00</td><td>.00</td><td>.02</td><td>.00</td><td>.01</td><td>.05</td><td>.19</td><td class=" hal">&nbsp;</td><td>.00</td><td>.00</td><td>.01</td></tr>
+<tr><th>4</th><td>.297</td><td>5.677</td><td>.00</td><td>.00</td><td>.00</td><td>.00</td><td>.28</td><td>.20</td><td>.01</td><td>.01</td><td>.05</td><td class=" hal">&nbsp;</td><td>.00</td><td>.00</td><td>.00</td></tr>
+<tr><th>5</th><td>.206</td><td>6.808</td><td>.00</td><td>.00</td><td>.01</td><td>.00</td><td>.11</td><td>.00</td><td>.01</td><td>.01</td><td>.06</td><td class=" hal">&nbsp;</td><td>.43</td><td>.00</td><td>.03</td></tr>
+<tr><th>6</th><td>.173</td><td>7.439</td><td>.00</td><td>.00</td><td>.02</td><td>.00</td><td>.31</td><td>.08</td><td>.00</td><td>.10</td><td>.04</td><td class=" hal">&nbsp;</td><td>.27</td><td>.00</td><td>.01</td></tr>
+<tr><th>7</th><td>.127</td><td>8.690</td><td>.00</td><td>.05</td><td>.04</td><td>.00</td><td>.00</td><td>.06</td><td>.43</td><td>.02</td><td>.09</td><td class=" hal">&nbsp;</td><td>.10</td><td>.01</td><td>.00</td></tr>
+<tr><th>8</th><td>.092</td><td>10.204</td><td>.00</td><td>.04</td><td>.03</td><td>.00</td><td>.04</td><td>.47</td><td>.01</td><td>.37</td><td>.29</td><td class=" hal">&nbsp;</td><td>.05</td><td>.00</td><td>.03</td></tr>
+<tr><th>9</th><td>.061</td><td>12.479</td><td>.00</td><td>.51</td><td>.23</td><td>.02</td><td>.01</td><td>.02</td><td>.27</td><td>.22</td><td>.18</td><td class=" hal">&nbsp;</td><td>.02</td><td>.00</td><td>.00</td></tr>
+<tr><th>10</th><td>.036</td><td>16.354</td><td>.01</td><td>.02</td><td>.61</td><td>.26</td><td>.10</td><td>.05</td><td>.04</td><td>.00</td><td>.02</td><td class=" hal">&nbsp;</td><td>.00</td><td>.16</td><td>.06</td></tr>
+<tr><th>11</th><td>.025</td><td>19.552</td><td>.00</td><td>.30</td><td>.05</td><td>.70</td><td>.02</td><td>.04</td><td>.07</td><td>.23</td><td>.00</td><td class=" hal">&nbsp;</td><td>.00</td><td>.19</td><td>.16</td></tr>
+<tr><th>12</th><td>.006</td><td>40.425</td><td>.98</td><td>.02</td><td>.00</td><td>.00</td><td>.10</td><td>.08</td><td>.13</td><td>.00</td><td>.08</td><td class=" hal">&nbsp;</td><td>.13</td><td>.62</td><td>.69</td></tr>
+<tr><th rowspan="11">3</th><th>1</th><td>8.830</td><td>1.000</td><td>.00</td><td>.00</td><td>.00</td><td class=" hal">&nbsp;</td><td>.00</td><td>.00</td><td>.00</td><td>.00</td><td>.00</td><td class=" hal">&nbsp;</td><td>.00</td><td>.00</td><td>.00</td></tr>
+<tr><th>2</th><td>.772</td><td>3.381</td><td>.00</td><td>.07</td><td>.04</td><td class=" hal">&nbsp;</td><td>.01</td><td>.00</td><td>.00</td><td>.00</td><td>.00</td><td class=" hal">&nbsp;</td><td>.00</td><td>.00</td><td>.01</td></tr>
+<tr><th>3</th><td>.408</td><td>4.649</td><td>.00</td><td>.03</td><td>.00</td><td class=" hal">&nbsp;</td><td>.02</td><td>.00</td><td>.01</td><td>.05</td><td>.18</td><td class=" hal">&nbsp;</td><td>.00</td><td>.00</td><td>.01</td></tr>
+<tr><th>4</th><td>.297</td><td>5.457</td><td>.00</td><td>.01</td><td>.01</td><td class=" hal">&nbsp;</td><td>.28</td><td>.20</td><td>.01</td><td>.01</td><td>.05</td><td class=" hal">&nbsp;</td><td>.00</td><td>.00</td><td>.00</td></tr>
+<tr><th>5</th><td>.206</td><td>6.548</td><td>.00</td><td>.01</td><td>.01</td><td class=" hal">&nbsp;</td><td>.12</td><td>.00</td><td>.01</td><td>.01</td><td>.07</td><td class=" hal">&nbsp;</td><td>.42</td><td>.00</td><td>.03</td></tr>
+<tr><th>6</th><td>.171</td><td>7.194</td><td>.00</td><td>.02</td><td>.01</td><td class=" hal">&nbsp;</td><td>.31</td><td>.08</td><td>.00</td><td>.11</td><td>.04</td><td class=" hal">&nbsp;</td><td>.29</td><td>.00</td><td>.01</td></tr>
+<tr><th>7</th><td>.126</td><td>8.358</td><td>.00</td><td>.08</td><td>.06</td><td class=" hal">&nbsp;</td><td>.00</td><td>.05</td><td>.43</td><td>.02</td><td>.09</td><td class=" hal">&nbsp;</td><td>.10</td><td>.01</td><td>.00</td></tr>
+<tr><th>8</th><td>.091</td><td>9.832</td><td>.00</td><td>.09</td><td>.03</td><td class=" hal">&nbsp;</td><td>.04</td><td>.47</td><td>.02</td><td>.41</td><td>.29</td><td class=" hal">&nbsp;</td><td>.04</td><td>.00</td><td>.03</td></tr>
+<tr><th>9</th><td>.060</td><td>12.125</td><td>.00</td><td>.64</td><td>.47</td><td class=" hal">&nbsp;</td><td>.00</td><td>.02</td><td>.26</td><td>.31</td><td>.21</td><td class=" hal">&nbsp;</td><td>.01</td><td>.00</td><td>.01</td></tr>
+<tr><th>10</th><td>.032</td><td>16.633</td><td>.01</td><td>.03</td><td>.36</td><td class=" hal">&nbsp;</td><td>.12</td><td>.09</td><td>.12</td><td>.07</td><td>.00</td><td class=" hal">&nbsp;</td><td>.00</td><td>.34</td><td>.20</td></tr>
+<tr><th>11</th><td>.006</td><td>38.821</td><td>.98</td><td>.03</td><td>.01</td><td class=" hal">&nbsp;</td><td>.10</td><td>.08</td><td>.14</td><td>.00</td><td>.08</td><td class=" hal">&nbsp;</td><td>.13</td><td>.64</td><td>.71</td></tr>
+<tr><th rowspan="10">4</th><th>1</th><td>8.003</td><td>1.000</td><td>.00</td><td>.00</td><td>.00</td><td class=" hal">&nbsp;</td><td>.00</td><td>.00</td><td>.00</td><td class=" hal">&nbsp;</td><td>.00</td><td class=" hal">&nbsp;</td><td>.00</td><td>.00</td><td>.00</td></tr>
+<tr><th>2</th><td>.772</td><td>3.219</td><td>.00</td><td>.07</td><td>.04</td><td class=" hal">&nbsp;</td><td>.01</td><td>.00</td><td>.00</td><td class=" hal">&nbsp;</td><td>.00</td><td class=" hal">&nbsp;</td><td>.00</td><td>.00</td><td>.01</td></tr>
+<tr><th>3</th><td>.350</td><td>4.784</td><td>.00</td><td>.05</td><td>.00</td><td class=" hal">&nbsp;</td><td>.00</td><td>.02</td><td>.02</td><td class=" hal">&nbsp;</td><td>.43</td><td class=" hal">&nbsp;</td><td>.01</td><td>.00</td><td>.00</td></tr>
+<tr><th>4</th><td>.289</td><td>5.264</td><td>.00</td><td>.00</td><td>.00</td><td class=" hal">&nbsp;</td><td>.33</td><td>.20</td><td>.03</td><td class=" hal">&nbsp;</td><td>.00</td><td class=" hal">&nbsp;</td><td>.02</td><td>.00</td><td>.00</td></tr>
+<tr><th>5</th><td>.205</td><td>6.252</td><td>.00</td><td>.00</td><td>.01</td><td class=" hal">&nbsp;</td><td>.18</td><td>.00</td><td>.01</td><td class=" hal">&nbsp;</td><td>.14</td><td class=" hal">&nbsp;</td><td>.34</td><td>.00</td><td>.03</td></tr>
+<tr><th>6</th><td>.150</td><td>7.316</td><td>.00</td><td>.00</td><td>.00</td><td class=" hal">&nbsp;</td><td>.23</td><td>.20</td><td>.07</td><td class=" hal">&nbsp;</td><td>.00</td><td class=" hal">&nbsp;</td><td>.47</td><td>.00</td><td>.02</td></tr>
+<tr><th>7</th><td>.124</td><td>8.046</td><td>.00</td><td>.07</td><td>.07</td><td class=" hal">&nbsp;</td><td>.03</td><td>.21</td><td>.42</td><td class=" hal">&nbsp;</td><td>.27</td><td class=" hal">&nbsp;</td><td>.02</td><td>.01</td><td>.00</td></tr>
+<tr><th>8</th><td>.070</td><td>10.729</td><td>.00</td><td>.71</td><td>.41</td><td class=" hal">&nbsp;</td><td>.00</td><td>.20</td><td>.24</td><td class=" hal">&nbsp;</td><td>.01</td><td class=" hal">&nbsp;</td><td>.00</td><td>.01</td><td>.03</td></tr>
+<tr><th>9</th><td>.033</td><td>15.505</td><td>.01</td><td>.07</td><td>.45</td><td class=" hal">&nbsp;</td><td>.10</td><td>.06</td><td>.06</td><td class=" hal">&nbsp;</td><td>.06</td><td class=" hal">&nbsp;</td><td>.01</td><td>.33</td><td>.19</td></tr>
+<tr><th>10</th><td>.006</td><td>36.877</td><td>.98</td><td>.02</td><td>.01</td><td class=" hal">&nbsp;</td><td>.11</td><td>.10</td><td>.14</td><td class=" hal">&nbsp;</td><td>.08</td><td class=" hal">&nbsp;</td><td>.13</td><td>.64</td><td>.72</td></tr>
+<tr><th rowspan="9">5</th><th>1</th><td>7.395</td><td>1.000</td><td>.00</td><td class=" hal">&nbsp;</td><td>.00</td><td class=" hal">&nbsp;</td><td>.00</td><td>.00</td><td>.00</td><td class=" hal">&nbsp;</td><td>.00</td><td class=" hal">&nbsp;</td><td>.00</td><td>.00</td><td>.00</td></tr>
+<tr><th>2</th><td>.539</td><td>3.703</td><td>.00</td><td class=" hal">&nbsp;</td><td>.18</td><td class=" hal">&nbsp;</td><td>.01</td><td>.01</td><td>.00</td><td class=" hal">&nbsp;</td><td>.07</td><td class=" hal">&nbsp;</td><td>.00</td><td>.00</td><td>.02</td></tr>
+<tr><th>3</th><td>.289</td><td>5.060</td><td>.00</td><td class=" hal">&nbsp;</td><td>.01</td><td class=" hal">&nbsp;</td><td>.34</td><td>.22</td><td>.04</td><td class=" hal">&nbsp;</td><td>.00</td><td class=" hal">&nbsp;</td><td>.02</td><td>.00</td><td>.00</td></tr>
+<tr><th>4</th><td>.269</td><td>5.244</td><td>.00</td><td class=" hal">&nbsp;</td><td>.22</td><td class=" hal">&nbsp;</td><td>.00</td><td>.02</td><td>.02</td><td class=" hal">&nbsp;</td><td>.56</td><td class=" hal">&nbsp;</td><td>.00</td><td>.00</td><td>.00</td></tr>
+<tr><th>5</th><td>.203</td><td>6.032</td><td>.00</td><td class=" hal">&nbsp;</td><td>.08</td><td class=" hal">&nbsp;</td><td>.19</td><td>.00</td><td>.01</td><td class=" hal">&nbsp;</td><td>.08</td><td class=" hal">&nbsp;</td><td>.35</td><td>.00</td><td>.03</td></tr>
+<tr><th>6</th><td>.149</td><td>7.036</td><td>.00</td><td class=" hal">&nbsp;</td><td>.00</td><td class=" hal">&nbsp;</td><td>.23</td><td>.22</td><td>.08</td><td class=" hal">&nbsp;</td><td>.00</td><td class=" hal">&nbsp;</td><td>.49</td><td>.00</td><td>.02</td></tr>
+<tr><th>7</th><td>.115</td><td>8.024</td><td>.00</td><td class=" hal">&nbsp;</td><td>.00</td><td class=" hal">&nbsp;</td><td>.04</td><td>.42</td><td>.62</td><td class=" hal">&nbsp;</td><td>.17</td><td class=" hal">&nbsp;</td><td>.01</td><td>.00</td><td>.00</td></tr>
+<tr><th>8</th><td>.035</td><td>14.583</td><td>.01</td><td class=" hal">&nbsp;</td><td>.50</td><td class=" hal">&nbsp;</td><td>.09</td><td>.03</td><td>.11</td><td class=" hal">&nbsp;</td><td>.05</td><td class=" hal">&nbsp;</td><td>.00</td><td>.34</td><td>.22</td></tr>
+<tr><th>9</th><td>.006</td><td>35.058</td><td>.98</td><td class=" hal">&nbsp;</td><td>.00</td><td class=" hal">&nbsp;</td><td>.10</td><td>.08</td><td>.12</td><td class=" hal">&nbsp;</td><td>.07</td><td class=" hal">&nbsp;</td><td>.12</td><td>.65</td><td>.71</td></tr>
+<tr><th rowspan="8">6</th><th>1</th><td>6.635</td><td>1.000</td><td>.00</td><td class=" hal">&nbsp;</td><td>.00</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td><td>.00</td><td>.00</td><td class=" hal">&nbsp;</td><td>.00</td><td class=" hal">&nbsp;</td><td>.00</td><td>.00</td><td>.00</td></tr>
+<tr><th>2</th><td>.533</td><td>3.528</td><td>.00</td><td class=" hal">&nbsp;</td><td>.18</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td><td>.02</td><td>.00</td><td class=" hal">&nbsp;</td><td>.07</td><td class=" hal">&nbsp;</td><td>.00</td><td>.00</td><td>.02</td></tr>
+<tr><th>3</th><td>.269</td><td>4.967</td><td>.00</td><td class=" hal">&nbsp;</td><td>.22</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td><td>.03</td><td>.01</td><td class=" hal">&nbsp;</td><td>.58</td><td class=" hal">&nbsp;</td><td>.00</td><td>.00</td><td>.00</td></tr>
+<tr><th>4</th><td>.233</td><td>5.336</td><td>.00</td><td class=" hal">&nbsp;</td><td>.07</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td><td>.24</td><td>.06</td><td class=" hal">&nbsp;</td><td>.03</td><td class=" hal">&nbsp;</td><td>.14</td><td>.00</td><td>.03</td></tr>
+<tr><th>5</th><td>.168</td><td>6.285</td><td>.00</td><td class=" hal">&nbsp;</td><td>.01</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td><td>.30</td><td>.03</td><td class=" hal">&nbsp;</td><td>.04</td><td class=" hal">&nbsp;</td><td>.67</td><td>.00</td><td>.00</td></tr>
+<tr><th>6</th><td>.117</td><td>7.534</td><td>.00</td><td class=" hal">&nbsp;</td><td>.00</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td><td>.35</td><td>.66</td><td class=" hal">&nbsp;</td><td>.18</td><td class=" hal">&nbsp;</td><td>.04</td><td>.00</td><td>.00</td></tr>
+<tr><th>7</th><td>.038</td><td>13.190</td><td>.01</td><td class=" hal">&nbsp;</td><td>.50</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td><td>.01</td><td>.12</td><td class=" hal">&nbsp;</td><td>.04</td><td class=" hal">&nbsp;</td><td>.02</td><td>.28</td><td>.28</td></tr>
+<tr><th>8</th><td>.007</td><td>31.623</td><td>.98</td><td class=" hal">&nbsp;</td><td>.01</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td><td>.05</td><td>.12</td><td class=" hal">&nbsp;</td><td>.05</td><td class=" hal">&nbsp;</td><td>.13</td><td>.71</td><td>.67</td></tr>
+<tr><th rowspan="7">7</th><th>1</th><td>5.837</td><td>1.000</td><td>.00</td><td class=" hal">&nbsp;</td><td>.00</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td><td>.00</td><td class=" hal">&nbsp;</td><td>.01</td><td class=" hal">&nbsp;</td><td>.00</td><td>.00</td><td>.00</td></tr>
+<tr><th>2</th><td>.514</td><td>3.369</td><td>.00</td><td class=" hal">&nbsp;</td><td>.18</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td><td>.00</td><td class=" hal">&nbsp;</td><td>.05</td><td class=" hal">&nbsp;</td><td>.00</td><td>.00</td><td>.02</td></tr>
+<tr><th>3</th><td>.266</td><td>4.686</td><td>.00</td><td class=" hal">&nbsp;</td><td>.25</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td><td>.03</td><td class=" hal">&nbsp;</td><td>.53</td><td class=" hal">&nbsp;</td><td>.00</td><td>.00</td><td>.00</td></tr>
+<tr><th>4</th><td>.202</td><td>5.372</td><td>.00</td><td class=" hal">&nbsp;</td><td>.06</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td><td>.05</td><td class=" hal">&nbsp;</td><td>.21</td><td class=" hal">&nbsp;</td><td>.52</td><td>.00</td><td>.02</td></tr>
+<tr><th>5</th><td>.135</td><td>6.566</td><td>.00</td><td class=" hal">&nbsp;</td><td>.00</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td><td>.66</td><td class=" hal">&nbsp;</td><td>.10</td><td class=" hal">&nbsp;</td><td>.30</td><td>.00</td><td>.01</td></tr>
+<tr><th>6</th><td>.038</td><td>12.325</td><td>.01</td><td class=" hal">&nbsp;</td><td>.49</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td><td>.16</td><td class=" hal">&nbsp;</td><td>.05</td><td class=" hal">&nbsp;</td><td>.02</td><td>.27</td><td>.29</td></tr>
+<tr><th>7</th><td>.007</td><td>28.989</td><td>.98</td><td class=" hal">&nbsp;</td><td>.01</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td><td class=" hal">&nbsp;</td><td>.09</td><td class=" hal">&nbsp;</td><td>.06</td><td class=" hal">&nbsp;</td><td>.15</td><td>.72</td><td>.66</td></tr>
+</tbody>
+<tfoot>
+<tr><td colspan="17">a.&nbsp;Dependent Variable: FAC1</td></tr>
+</tfoot>
+</table>
+</div>
+</div>
+<div>
+<table class="pivot" data-rows="1,0,2,21,0,7" data-cols="2,7" data-heights="30,0,57,504,199" data-widths="102,636" data-curCounts="21,7" data-curSizess="21,7">
+<caption colspan="9" title="a. Dependent Variable: FAC1">Excluded Variables<sup>a</sup></caption>
+<thead>
+<tr><th class="cornerLabels" rowspan="2" colspan="2">Model</th><th rowspan="2">Beta In</th><th rowspan="2">t</th><th rowspan="2">Sig.</th><th rowspan="2">Partial Correlation</th><th colspan="2">Collinearity Statistics</th></tr>
+<tr><th>Tolerance</th><th>VIF</th><th>Minimum Tolerance</th></tr>
+</thead>
+<tbody data-rect="0,20,0,6">
+<tr><th style="min-width:48px">2</th><th style="min-width:54px">s2480</th><td style="min-width:67px" title="b. Predictors in the Model: (Constant), SR650750, s1920, s1870, s1840, s2490, s1360, s1890, s1910, SR550650, s1370, s1380">-.055<sup>b</sup></td><td style="min-width:67px">-.265</td><td style="min-width:67px">.793</td><td style="min-width:96px">-.042</td><td style="min-width:74px">.203</td><td style="min-width:67px">4.923</td><td style="min-width:96px">.075</td></tr>
+<tr><th rowspan="2">3</th><th>s2480</th><td title="c. Predictors in the Model: (Constant), SR650750, s1920, s1870, s1840, s2490, s1360, s1890, s1910, SR550650, s1370">-.071<sup>c</sup></td><td>-.367</td><td>.715</td><td>-.058</td><td>.223</td><td>4.492</td><td>.160</td></tr>
+<tr><th>s1380</th><td title="c. Predictors in the Model: (Constant), SR650750, s1920, s1870, s1840, s2490, s1360, s1890, s1910, SR550650, s1370">-.120<sup>c</sup></td><td>-.376</td><td>.709</td><td>-.059</td><td>.082</td><td>12.180</td><td>.082</td></tr>
+<tr><th rowspan="3">4</th><th>s2480</th><td title="d. Predictors in the Model: (Constant), SR650750, s1920, s1870, s1840, s2490, s1360, s1890, SR550650, s1370">-.038<sup>d</sup></td><td>-.210</td><td>.834</td><td>-.033</td><td>.250</td><td>3.997</td><td>.165</td></tr>
+<tr><th>s1380</th><td title="d. Predictors in the Model: (Constant), SR650750, s1920, s1870, s1840, s2490, s1360, s1890, SR550650, s1370">-.067<sup>d</sup></td><td>-.225</td><td>.823</td><td>-.035</td><td>.092</td><td>10.920</td><td>.092</td></tr>
+<tr><th>s1910</th><td title="d. Predictors in the Model: (Constant), SR650750, s1920, s1870, s1840, s2490, s1360, s1890, SR550650, s1370">.063<sup>d</sup></td><td>.420</td><td>.677</td><td>.065</td><td>.369</td><td>2.713</td><td>.194</td></tr>
+<tr><th rowspan="4">5</th><th>s2480</th><td title="e. Predictors in the Model: (Constant), SR650750, s1920, s1870, s1840, s2490, s1890, SR550650, s1370">-.060<sup>e</sup></td><td>-.333</td><td>.740</td><td>-.051</td><td>.254</td><td>3.934</td><td>.254</td></tr>
+<tr><th>s1380</th><td title="e. Predictors in the Model: (Constant), SR650750, s1920, s1870, s1840, s2490, s1890, SR550650, s1370">-.186<sup>e</sup></td><td>-.801</td><td>.428</td><td>-.123</td><td>.151</td><td>6.636</td><td>.151</td></tr>
+<tr><th>s1910</th><td title="e. Predictors in the Model: (Constant), SR650750, s1920, s1870, s1840, s2490, s1890, SR550650, s1370">.038<sup>e</sup></td><td>.254</td><td>.801</td><td>.039</td><td>.378</td><td>2.643</td><td>.340</td></tr>
+<tr><th>s1360</th><td title="e. Predictors in the Model: (Constant), SR650750, s1920, s1870, s1840, s2490, s1890, SR550650, s1370">-.176<sup>e</sup></td><td>-1.002</td><td>.322</td><td>-.153</td><td>.261</td><td>3.834</td><td>.194</td></tr>
+<tr><th rowspan="5">6</th><th>s2480</th><td title="f. Predictors in the Model: (Constant), SR650750, s1920, s1870, s2490, s1890, SR550650, s1370">-.077<sup>f</sup></td><td>-.427</td><td>.672</td><td>-.065</td><td>.255</td><td>3.914</td><td>.255</td></tr>
+<tr><th>s1380</th><td title="f. Predictors in the Model: (Constant), SR650750, s1920, s1870, s2490, s1890, SR550650, s1370">-.140<sup>f</sup></td><td>-.597</td><td>.553</td><td>-.091</td><td>.154</td><td>6.512</td><td>.154</td></tr>
+<tr><th>s1910</th><td title="f. Predictors in the Model: (Constant), SR650750, s1920, s1870, s2490, s1890, SR550650, s1370">.066<sup>f</sup></td><td>.445</td><td>.659</td><td>.068</td><td>.386</td><td>2.587</td><td>.340</td></tr>
+<tr><th>s1360</th><td title="f. Predictors in the Model: (Constant), SR650750, s1920, s1870, s2490, s1890, SR550650, s1370">-.144<sup>f</sup></td><td>-.814</td><td>.420</td><td>-.123</td><td>.265</td><td>3.777</td><td>.199</td></tr>
+<tr><th>s1840</th><td title="f. Predictors in the Model: (Constant), SR650750, s1920, s1870, s2490, s1890, SR550650, s1370">.136<sup>f</sup></td><td>1.378</td><td>.175</td><td>.206</td><td>.831</td><td>1.203</td><td>.346</td></tr>
+<tr><th rowspan="6">7</th><th>s2480</th><td title="g. Predictors in the Model: (Constant), SR650750, s1920, s2490, s1890, SR550650, s1370">-.159<sup>g</sup></td><td>-.922</td><td>.362</td><td>-.138</td><td>.289</td><td>3.464</td><td>.286</td></tr>
+<tr><th>s1380</th><td title="g. Predictors in the Model: (Constant), SR650750, s1920, s2490, s1890, SR550650, s1370">-.047<sup>g</sup></td><td>-.204</td><td>.839</td><td>-.031</td><td>.163</td><td>6.142</td><td>.163</td></tr>
+<tr><th>s1910</th><td title="g. Predictors in the Model: (Constant), SR650750, s1920, s2490, s1890, SR550650, s1370">.128<sup>g</sup></td><td>.907</td><td>.369</td><td>.135</td><td>.429</td><td>2.328</td><td>.340</td></tr>
+<tr><th>s1360</th><td title="g. Predictors in the Model: (Constant), SR650750, s1920, s2490, s1890, SR550650, s1370">-.042<sup>g</sup></td><td>-.247</td><td>.806</td><td>-.037</td><td>.297</td><td>3.367</td><td>.214</td></tr>
+<tr><th>s1840</th><td title="g. Predictors in the Model: (Constant), SR650750, s1920, s2490, s1890, SR550650, s1370">.092<sup>g</sup></td><td>.930</td><td>.358</td><td>.139</td><td>.882</td><td>1.133</td><td>.349</td></tr>
+<tr><th>s1870</th><td title="g. Predictors in the Model: (Constant), SR650750, s1920, s2490, s1890, SR550650, s1370">.160<sup>g</sup></td><td>1.572</td><td>.123</td><td>.231</td><td>.800</td><td>1.250</td><td>.347</td></tr>
+</tbody>
+<tfoot>
+<tr><td colspan="9">a.&nbsp;Dependent Variable: FAC1</td></tr>
+<tr><td colspan="9">b.&nbsp;Predictors in the Model: (Constant), SR650750, s1920, s1870, s1840, s2490, s1360, s1890, s1910, SR550650, s1370, s1380</td></tr>
+<tr><td colspan="9">c.&nbsp;Predictors in the Model: (Constant), SR650750, s1920, s1870, s1840, s2490, s1360, s1890, s1910, SR550650, s1370</td></tr>
+<tr><td colspan="9">d.&nbsp;Predictors in the Model: (Constant), SR650750, s1920, s1870, s1840, s2490, s1360, s1890, SR550650, s1370</td></tr>
+<tr><td colspan="9">e.&nbsp;Predictors in the Model: (Constant), SR650750, s1920, s1870, s1840, s2490, s1890, SR550650, s1370</td></tr>
+<tr><td colspan="9">f.&nbsp;Predictors in the Model: (Constant), SR650750, s1920, s1870, s2490, s1890, SR550650, s1370</td></tr>
+<tr><td colspan="9">g.&nbsp;Predictors in the Model: (Constant), SR650750, s1920, s2490, s1890, SR550650, s1370</td></tr>
+</tfoot>
+</table>
+</div>
+</div>
+<div>
+<table class="pivot" data-rows="1,0,1,4,0,1" data-cols="1,5" data-heights="30,0,21,88,22" data-widths="129,542" data-curCounts="4,5" data-curSizess="4,5">
+<caption colspan="6" title="a. Dependent Variable: FAC1">Residuals Statistics<sup>a</sup></caption>
+<thead>
+<tr><th class="cornerLabels">&nbsp;</th><th>Minimum</th><th>Maximum</th><th>Mean</th><th>Std. Deviation</th><th>N</th></tr>
+</thead>
+<tbody data-rect="0,3,0,4">
+<tr><th style="min-width:129px">Predicted Value</th><td style="min-width:89px">-1.7104086</td><td style="min-width:85px">1.2928510</td><td style="min-width:78px">-.0000006</td><td style="min-width:94px">.78519444</td><td style="min-width:67px">52</td></tr>
+<tr><th>Residual</th><td>-1.09980667</td><td>1.55924833</td><td>.00000000</td><td>.61924996</td><td>52</td></tr>
+<tr><th>Std. Predicted Value</th><td>-2.178</td><td>1.647</td><td>.000</td><td>1.000</td><td>52</td></tr>
+<tr><th>Std. Residual</th><td>-1.668</td><td>2.365</td><td>.000</td><td>.939</td><td>52</td></tr>
+</tbody>
+<tfoot>
+<tr><td colspan="6">a.&nbsp;Dependent Variable: FAC1</td></tr>
+</tfoot>
+</table>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,6 @@
+Fact1  Backward (method) Regression: the 6th Model
+(see SPSS Result Fiel: Fact1_RegPython)
+Fact2  Backward (method) Regression: the 6th model
+(see SPSS Result Fiel: Fact2_RegPython)
+Fact3  Backward (method) Regression: the 8th model
+(see SPSS Result Fiel: Fact3_RegPython)

@@ -1,0 +1,9 @@
+1. FianlDataforLassoN_F1 - csv file of the original band dataset of Factor 1
+
+2. Guangzhou Lasso with Alpha Values-Test1 - the python code running the Lasso Regression
+
+3. Lasso_F1_Alp001_CV15_Optimal - the optimal bands selected by the Lasso regression with Alpha = 0.01 and the test sample size 15% for cross validation
+
+4. Lasso Cross Validation Results - R-squared value between the training and the testing results
+
+5. 3 Factors Regression Validate Results - the regression result of each Factor v.s. the optimal bands selected by the Lasso regression (the accompnaying SPSS Outcome Files for details)

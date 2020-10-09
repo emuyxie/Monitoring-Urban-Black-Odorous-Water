@@ -1,0 +1,7 @@
+The testing (validation) sample size 15%
+The Lasso Regression is using Alpha = 0.01
+The validation R-squared values:
+   Factor 1: RSquare Value for Lasso Regression TEST data is 0.554
+   Factor 2: RSquare Value for Lasso Regression TEST data is 0.243
+   Factor 3: RSquare Value for Lasso Regression TEST data is 0.589
+
